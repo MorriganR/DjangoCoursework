@@ -46,3 +46,7 @@ dasha@ubun18:~$
    35  ll
    36  vi ./mysite/settings.py
    37  python manage.py runserver 0:8000
+
+source tutorial-env/bin/activate
+cd ./mysite/
+nohup python manage.py runserver 0:8000
