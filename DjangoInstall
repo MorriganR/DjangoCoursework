@@ -1,0 +1,39 @@
+dasha@ubun18:~$ history
+    1  mc
+    2  sudo apt install mc
+    3  python
+    4  python3
+    5  sudo apt install apache2
+    6  sudo systemctl status apache2
+    7  sudo apt install libapache2-mod-wsgi-py3
+    8  apt search pip
+    9  apt search pip | grep pip
+   10  apt search pip | grep ^pip
+   11  python3 -m pip install Django
+   12  apt search python3-pip
+   13  sudo apt install python3-pip
+   14  sudo apt install python3-pip3
+   15  sudo apt install python3-pip
+   16  python3 -m pip install Django
+   17  python3 -m django --version
+   18  pwd
+   19  django-admin startproject mysite
+   20  apt search python3-django-common
+   21  apt search python-django-common
+   22  python3 -m django
+   23  python3 -m venv tutorial-env
+   24  sudo apt install python3-venv
+   25  python3 -m venv tutorial-env
+   26  mc
+   27  history
+dasha@ubun18:~$
+
+(tutorial-env) dasha@ubun18:~$ history
+    1  cd
+    2  source tutorial-env/bin/activate
+    3  python
+    4  python3
+    5  python -m pip install Django
+    6  django-admin startproject mysite
+    7  history
+(tutorial-env) dasha@ubun18:~$
