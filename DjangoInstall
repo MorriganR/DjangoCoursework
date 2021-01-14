@@ -37,3 +37,12 @@ dasha@ubun18:~$
     6  django-admin startproject mysite
     7  history
 (tutorial-env) dasha@ubun18:~$
+   29  cd ./mysite/
+   30  ll
+   31  python manage.py runserver
+   32  python manage.py runserver 0:8000
+   33  mc
+   34  python manage.py runserver 0:8000
+   35  ll
+   36  vi ./mysite/settings.py
+   37  python manage.py runserver 0:8000
