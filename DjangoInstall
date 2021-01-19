@@ -50,3 +50,6 @@ dasha@ubun18:~$
 source tutorial-env/bin/activate
 cd ./mysite/
 nohup python manage.py runserver 0:8000
+
+Налаштування Апач для обслуговування Дьянго:
+https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-ubuntu-16-04
