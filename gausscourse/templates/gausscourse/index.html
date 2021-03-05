@@ -1,0 +1,18 @@
+{% if course_list %}
+<table style="width:50%">
+  <tr>
+    <th>name</th>
+    <th>start_date</th>
+    <th>finish_date</th>
+  </tr>
+    {% for course in course_list %}
+  <tr>
+    <td>{{ course.name }}</td>
+    <td>{{ course.start_date }}</td>
+    <td>{{ course.finish_date }}</td>
+  </tr>
+    {% endfor %}
+</table>
+{% else %}
+    <p>No courses are available.</p>
+{% endif %}
