@@ -30,3 +30,5 @@ python manage.py migrate
 ```
 python manage.py runserver
 ```
+
+Django admin credentials: admin admin1234
