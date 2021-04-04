@@ -39,3 +39,8 @@ git fetch origin
 git checkout -B main origin/main
 ```
 
+Create new migrations if models in models.py is changed:
+```
+python manage.py makemigrations gausscourse
+python manage.py migrate
+```
