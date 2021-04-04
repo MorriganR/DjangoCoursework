@@ -44,3 +44,9 @@ Create new migrations if models in models.py is changed:
 python manage.py makemigrations gausscourse
 python manage.py migrate
 ```
+
+How to dump/restore the DB:
+```
+.\manage.py dumpdata --indent 2 --format xml > db.xml
+.\manage.py loaddata db.xml
+```
