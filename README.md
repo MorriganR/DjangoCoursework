@@ -32,3 +32,10 @@ python manage.py runserver
 ```
 
 Django admin credentials: admin admin1234
+
+For sync local/main with remote/origin/main:
+```
+git fetch origin
+git checkout -B main origin/main
+```
+
