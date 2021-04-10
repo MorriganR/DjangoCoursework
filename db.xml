@@ -28,6 +28,13 @@
     <field name="is_public" type="BooleanField">True</field>
     <field name="is_disabled" type="BooleanField">False</field>
   </object>
+  <object model="gausscourse.course" pk="5">
+    <field name="name" type="CharField">Схемотехніка</field>
+    <field name="start_date" type="DateTimeField">2021-04-10T19:15:49+00:00</field>
+    <field name="finish_date" type="DateTimeField">2021-04-29T12:00:00+00:00</field>
+    <field name="is_public" type="BooleanField">True</field>
+    <field name="is_disabled" type="BooleanField">False</field>
+  </object>
   <object model="gausscourse.group" pk="1">
     <field name="name" type="CharField">3 бакалавр</field>
     <field name="curator" type="CharField">Барабанов О.В.</field>
@@ -69,8 +76,76 @@
     <field name="user" rel="ManyToOneRel" to="auth.user">2</field>
     <field name="is_admin" type="BooleanField">False</field>
   </object>
+  <object model="gausscourse.myuser" pk="2">
+    <field name="name" type="CharField">dd</field>
+    <field name="user" rel="ManyToOneRel" to="auth.user">3</field>
+    <field name="is_admin" type="BooleanField">False</field>
+  </object>
+  <object model="gausscourse.myuser" pk="3">
+    <field name="name" type="CharField">dd</field>
+    <field name="user" rel="ManyToOneRel" to="auth.user">4</field>
+    <field name="is_admin" type="BooleanField">False</field>
+  </object>
+  <object model="gausscourse.myuser" pk="4">
+    <field name="name" type="CharField">dd</field>
+    <field name="user" rel="ManyToOneRel" to="auth.user">5</field>
+    <field name="is_admin" type="BooleanField">False</field>
+  </object>
+  <object model="gausscourse.myuser" pk="5">
+    <field name="name" type="CharField">dd</field>
+    <field name="user" rel="ManyToOneRel" to="auth.user">6</field>
+    <field name="is_admin" type="BooleanField">False</field>
+  </object>
+  <object model="gausscourse.myuser" pk="6">
+    <field name="name" type="CharField">dd</field>
+    <field name="user" rel="ManyToOneRel" to="auth.user">7</field>
+    <field name="is_admin" type="BooleanField">False</field>
+  </object>
+  <object model="gausscourse.myuser" pk="7">
+    <field name="name" type="CharField">dd</field>
+    <field name="user" rel="ManyToOneRel" to="auth.user">8</field>
+    <field name="is_admin" type="BooleanField">False</field>
+  </object>
+  <object model="gausscourse.myuser" pk="8">
+    <field name="name" type="CharField">dd</field>
+    <field name="user" rel="ManyToOneRel" to="auth.user">9</field>
+    <field name="is_admin" type="BooleanField">False</field>
+  </object>
+  <object model="gausscourse.myuser" pk="9">
+    <field name="name" type="CharField">dd</field>
+    <field name="user" rel="ManyToOneRel" to="auth.user">10</field>
+    <field name="is_admin" type="BooleanField">False</field>
+  </object>
+  <object model="gausscourse.myuser" pk="10">
+    <field name="name" type="CharField">dd</field>
+    <field name="user" rel="ManyToOneRel" to="auth.user">11</field>
+    <field name="is_admin" type="BooleanField">False</field>
+  </object>
+  <object model="gausscourse.myuser" pk="11">
+    <field name="name" type="CharField">dd</field>
+    <field name="user" rel="ManyToOneRel" to="auth.user">12</field>
+    <field name="is_admin" type="BooleanField">False</field>
+  </object>
+  <object model="gausscourse.grade" pk="1">
+    <field name="name" type="CharField">ddg</field>
+    <field name="my_user" rel="ManyToOneRel" to="gausscourse.myuser">1</field>
+    <field name="course_group" rel="ManyToOneRel" to="gausscourse.coursegroup">1</field>
+    <field name="grade" type="IntegerField">56</field>
+  </object>
+  <object model="gausscourse.grade" pk="2">
+    <field name="name" type="CharField">11</field>
+    <field name="my_user" rel="ManyToOneRel" to="gausscourse.myuser">1</field>
+    <field name="course_group" rel="ManyToOneRel" to="gausscourse.coursegroup">1</field>
+    <field name="grade" type="IntegerField">22</field>
+  </object>
+  <object model="gausscourse.grade" pk="3">
+    <field name="name" type="CharField">11</field>
+    <field name="my_user" rel="ManyToOneRel" to="gausscourse.myuser">1</field>
+    <field name="course_group" rel="ManyToOneRel" to="gausscourse.coursegroup">1</field>
+    <field name="grade" type="IntegerField">23</field>
+  </object>
   <object model="admin.logentry" pk="1">
-    <field name="action_time" type="DateTimeField">2021-03-02T19:23:58.496298+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-03-02T19:23:58.496000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">4</field>
     <field name="object_id" type="TextField">2</field>
@@ -79,7 +154,7 @@
     <field name="change_message" type="TextField">[{"added": {}}]</field>
   </object>
   <object model="admin.logentry" pk="2">
-    <field name="action_time" type="DateTimeField">2021-03-05T18:31:02.832389+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-03-05T18:31:02.832000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">8</field>
     <field name="object_id" type="TextField">1</field>
@@ -88,7 +163,7 @@
     <field name="change_message" type="TextField">[{"added": {}}]</field>
   </object>
   <object model="admin.logentry" pk="3">
-    <field name="action_time" type="DateTimeField">2021-03-05T18:31:35.416934+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-03-05T18:31:35.416000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">8</field>
     <field name="object_id" type="TextField">2</field>
@@ -97,7 +172,7 @@
     <field name="change_message" type="TextField">[{"added": {}}]</field>
   </object>
   <object model="admin.logentry" pk="4">
-    <field name="action_time" type="DateTimeField">2021-03-05T18:32:02.402598+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-03-05T18:32:02.402000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">8</field>
     <field name="object_id" type="TextField">3</field>
@@ -106,7 +181,7 @@
     <field name="change_message" type="TextField">[{"added": {}}]</field>
   </object>
   <object model="admin.logentry" pk="5">
-    <field name="action_time" type="DateTimeField">2021-03-05T18:32:28.655921+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-03-05T18:32:28.655000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">8</field>
     <field name="object_id" type="TextField">4</field>
@@ -115,7 +190,7 @@
     <field name="change_message" type="TextField">[{"added": {}}]</field>
   </object>
   <object model="admin.logentry" pk="6">
-    <field name="action_time" type="DateTimeField">2021-03-05T18:37:47.771979+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-03-05T18:37:47.771000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
     <field name="object_id" type="TextField">1</field>
@@ -124,7 +199,7 @@
     <field name="change_message" type="TextField">[{"added": {}}]</field>
   </object>
   <object model="admin.logentry" pk="7">
-    <field name="action_time" type="DateTimeField">2021-03-05T18:38:11.419540+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-03-05T18:38:11.419000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
     <field name="object_id" type="TextField">2</field>
@@ -133,7 +208,7 @@
     <field name="change_message" type="TextField">[{"added": {}}]</field>
   </object>
   <object model="admin.logentry" pk="8">
-    <field name="action_time" type="DateTimeField">2021-03-05T18:38:31.773841+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-03-05T18:38:31.773000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
     <field name="object_id" type="TextField">3</field>
@@ -142,7 +217,7 @@
     <field name="change_message" type="TextField">[{"added": {}}]</field>
   </object>
   <object model="admin.logentry" pk="9">
-    <field name="action_time" type="DateTimeField">2021-03-17T09:51:12.724841+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-03-17T09:51:12.724000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">8</field>
     <field name="object_id" type="TextField">4</field>
@@ -151,7 +226,7 @@
     <field name="change_message" type="TextField">[{"changed": {"fields": ["Creator"]}}]</field>
   </object>
   <object model="admin.logentry" pk="10">
-    <field name="action_time" type="DateTimeField">2021-03-17T09:51:16.285509+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-03-17T09:51:16.285000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">8</field>
     <field name="object_id" type="TextField">3</field>
@@ -160,7 +235,7 @@
     <field name="change_message" type="TextField">[{"changed": {"fields": ["Creator"]}}]</field>
   </object>
   <object model="admin.logentry" pk="11">
-    <field name="action_time" type="DateTimeField">2021-03-17T09:54:03.886826+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-03-17T09:54:03.886000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">4</field>
     <field name="object_id" type="TextField">1</field>
@@ -169,7 +244,7 @@
     <field name="change_message" type="TextField">[{"changed": {"fields": ["First name", "Last name"]}}]</field>
   </object>
   <object model="admin.logentry" pk="12">
-    <field name="action_time" type="DateTimeField">2021-03-17T09:54:13.106587+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-03-17T09:54:13.106000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">4</field>
     <field name="object_id" type="TextField">2</field>
@@ -178,7 +253,7 @@
     <field name="change_message" type="TextField">[{"changed": {"fields": ["First name", "Last name"]}}]</field>
   </object>
   <object model="admin.logentry" pk="13">
-    <field name="action_time" type="DateTimeField">2021-04-04T11:53:19.631900+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-04-04T11:53:19.631000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">10</field>
     <field name="object_id" type="TextField">1</field>
@@ -187,7 +262,7 @@
     <field name="change_message" type="TextField">[{"added": {}}]</field>
   </object>
   <object model="admin.logentry" pk="14">
-    <field name="action_time" type="DateTimeField">2021-04-04T11:59:07.824778+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-04-04T11:59:07.824000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">9</field>
     <field name="object_id" type="TextField">1</field>
@@ -196,7 +271,7 @@
     <field name="change_message" type="TextField">[{"added": {}}]</field>
   </object>
   <object model="admin.logentry" pk="15">
-    <field name="action_time" type="DateTimeField">2021-04-04T11:59:14.678792+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-04-04T11:59:14.678000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">9</field>
     <field name="object_id" type="TextField">2</field>
@@ -205,7 +280,7 @@
     <field name="change_message" type="TextField">[{"added": {}}]</field>
   </object>
   <object model="admin.logentry" pk="16">
-    <field name="action_time" type="DateTimeField">2021-04-04T11:59:23.262543+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-04-04T11:59:23.262000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">9</field>
     <field name="object_id" type="TextField">3</field>
@@ -214,7 +289,7 @@
     <field name="change_message" type="TextField">[{"added": {}}]</field>
   </object>
   <object model="admin.logentry" pk="17">
-    <field name="action_time" type="DateTimeField">2021-04-04T11:59:33.927543+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-04-04T11:59:33.927000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
     <field name="object_id" type="TextField">3</field>
@@ -223,7 +298,7 @@
     <field name="change_message" type="TextField">[{"changed": {"fields": ["Group"]}}]</field>
   </object>
   <object model="admin.logentry" pk="18">
-    <field name="action_time" type="DateTimeField">2021-04-04T11:59:39.077552+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-04-04T11:59:39.077000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
     <field name="object_id" type="TextField">2</field>
@@ -232,7 +307,7 @@
     <field name="change_message" type="TextField">[{"changed": {"fields": ["Group"]}}]</field>
   </object>
   <object model="admin.logentry" pk="19">
-    <field name="action_time" type="DateTimeField">2021-04-04T11:59:42.767560+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-04-04T11:59:42.767000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
     <field name="object_id" type="TextField">1</field>
@@ -241,11 +316,56 @@
     <field name="change_message" type="TextField">[{"changed": {"fields": ["Group"]}}]</field>
   </object>
   <object model="admin.logentry" pk="20">
-    <field name="action_time" type="DateTimeField">2021-04-04T12:02:57.965384+00:00</field>
+    <field name="action_time" type="DateTimeField">2021-04-04T12:02:57.965000+00:00</field>
     <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
     <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">7</field>
     <field name="object_id" type="TextField">4</field>
     <field name="object_repr" type="CharField">Еволюційні обчислення - 1 бакалавр</field>
+    <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+    <field name="change_message" type="TextField">[{"added": {}}]</field>
+  </object>
+  <object model="admin.logentry" pk="21">
+    <field name="action_time" type="DateTimeField">2021-04-10T19:04:07.102227+00:00</field>
+    <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">11</field>
+    <field name="object_id" type="TextField">1</field>
+    <field name="object_repr" type="CharField">55</field>
+    <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+    <field name="change_message" type="TextField">[{"added": {}}]</field>
+  </object>
+  <object model="admin.logentry" pk="22">
+    <field name="action_time" type="DateTimeField">2021-04-10T19:04:42.234272+00:00</field>
+    <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">11</field>
+    <field name="object_id" type="TextField">1</field>
+    <field name="object_repr" type="CharField">56</field>
+    <field name="action_flag" type="PositiveSmallIntegerField">2</field>
+    <field name="change_message" type="TextField">[{"changed": {"fields": ["My user", "Grade"]}}]</field>
+  </object>
+  <object model="admin.logentry" pk="23">
+    <field name="action_time" type="DateTimeField">2021-04-10T19:05:07.427310+00:00</field>
+    <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">11</field>
+    <field name="object_id" type="TextField">2</field>
+    <field name="object_repr" type="CharField">22</field>
+    <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+    <field name="change_message" type="TextField">[{"added": {}}]</field>
+  </object>
+  <object model="admin.logentry" pk="24">
+    <field name="action_time" type="DateTimeField">2021-04-10T19:06:26.771988+00:00</field>
+    <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">11</field>
+    <field name="object_id" type="TextField">3</field>
+    <field name="object_repr" type="CharField">23</field>
+    <field name="action_flag" type="PositiveSmallIntegerField">1</field>
+    <field name="change_message" type="TextField">[{"added": {}}]</field>
+  </object>
+  <object model="admin.logentry" pk="25">
+    <field name="action_time" type="DateTimeField">2021-04-10T19:15:58.483127+00:00</field>
+    <field name="user" rel="ManyToOneRel" to="auth.user">1</field>
+    <field name="content_type" rel="ManyToOneRel" to="contenttypes.contenttype">8</field>
+    <field name="object_id" type="TextField">5</field>
+    <field name="object_repr" type="CharField">Схемотехніка</field>
     <field name="action_flag" type="PositiveSmallIntegerField">1</field>
     <field name="change_message" type="TextField">[{"added": {}}]</field>
   </object>
@@ -471,7 +591,7 @@
   </object>
   <object model="auth.user" pk="1">
     <field name="password" type="CharField">pbkdf2_sha256$216000$1it0IRmmKPvJ$XXn9v+f4QzwBHzNMdc/MLqZny+6Hb4bFKL0LpRlfE8A=</field>
-    <field name="last_login" type="DateTimeField">2021-04-04T11:52:29.835677+00:00</field>
+    <field name="last_login" type="DateTimeField">2021-04-04T11:52:29.835000+00:00</field>
     <field name="is_superuser" type="BooleanField">True</field>
     <field name="username" type="CharField">admin</field>
     <field name="first_name" type="CharField">D</field>
@@ -487,9 +607,149 @@
     <field name="password" type="CharField">pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=</field>
     <field name="last_login" type="DateTimeField"><None></None></field>
     <field name="is_superuser" type="BooleanField">False</field>
-    <field name="username" type="CharField">user</field>
-    <field name="first_name" type="CharField">R</field>
-    <field name="last_name" type="CharField">R</field>
+    <field name="username" type="CharField">Aaaaa</field>
+    <field name="first_name" type="CharField">Aaaaa</field>
+    <field name="last_name" type="CharField">Aaaaa</field>
+    <field name="email" type="CharField"></field>
+    <field name="is_staff" type="BooleanField">False</field>
+    <field name="is_active" type="BooleanField">True</field>
+    <field name="date_joined" type="DateTimeField">2021-03-02T19:23:58+00:00</field>
+    <field name="groups" rel="ManyToManyRel" to="auth.group"></field>
+    <field name="user_permissions" rel="ManyToManyRel" to="auth.permission"></field>
+  </object>
+  <object model="auth.user" pk="3">
+    <field name="password" type="CharField">pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=</field>
+    <field name="last_login" type="DateTimeField"><None></None></field>
+    <field name="is_superuser" type="BooleanField">False</field>
+    <field name="username" type="CharField">Bbbbb</field>
+    <field name="first_name" type="CharField">Bbbbb</field>
+    <field name="last_name" type="CharField">Bbbbb</field>
+    <field name="email" type="CharField"></field>
+    <field name="is_staff" type="BooleanField">False</field>
+    <field name="is_active" type="BooleanField">True</field>
+    <field name="date_joined" type="DateTimeField">2021-03-02T19:23:58+00:00</field>
+    <field name="groups" rel="ManyToManyRel" to="auth.group"></field>
+    <field name="user_permissions" rel="ManyToManyRel" to="auth.permission"></field>
+  </object>
+  <object model="auth.user" pk="4">
+    <field name="password" type="CharField">pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=</field>
+    <field name="last_login" type="DateTimeField"><None></None></field>
+    <field name="is_superuser" type="BooleanField">False</field>
+    <field name="username" type="CharField">ccccc</field>
+    <field name="first_name" type="CharField">ccccc</field>
+    <field name="last_name" type="CharField">ccccc</field>
+    <field name="email" type="CharField"></field>
+    <field name="is_staff" type="BooleanField">False</field>
+    <field name="is_active" type="BooleanField">True</field>
+    <field name="date_joined" type="DateTimeField">2021-03-02T19:23:58+00:00</field>
+    <field name="groups" rel="ManyToManyRel" to="auth.group"></field>
+    <field name="user_permissions" rel="ManyToManyRel" to="auth.permission"></field>
+  </object>
+  <object model="auth.user" pk="5">
+    <field name="password" type="CharField">pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=</field>
+    <field name="last_login" type="DateTimeField"><None></None></field>
+    <field name="is_superuser" type="BooleanField">False</field>
+    <field name="username" type="CharField">ddddd</field>
+    <field name="first_name" type="CharField">ddddd</field>
+    <field name="last_name" type="CharField">dddddd</field>
+    <field name="email" type="CharField"></field>
+    <field name="is_staff" type="BooleanField">False</field>
+    <field name="is_active" type="BooleanField">True</field>
+    <field name="date_joined" type="DateTimeField">2021-03-02T19:23:58+00:00</field>
+    <field name="groups" rel="ManyToManyRel" to="auth.group"></field>
+    <field name="user_permissions" rel="ManyToManyRel" to="auth.permission"></field>
+  </object>
+  <object model="auth.user" pk="6">
+    <field name="password" type="CharField">pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=</field>
+    <field name="last_login" type="DateTimeField"><None></None></field>
+    <field name="is_superuser" type="BooleanField">False</field>
+    <field name="username" type="CharField">eeeeeee</field>
+    <field name="first_name" type="CharField">eeeeee</field>
+    <field name="last_name" type="CharField">eeeee</field>
+    <field name="email" type="CharField"></field>
+    <field name="is_staff" type="BooleanField">False</field>
+    <field name="is_active" type="BooleanField">True</field>
+    <field name="date_joined" type="DateTimeField">2021-03-02T19:23:58+00:00</field>
+    <field name="groups" rel="ManyToManyRel" to="auth.group"></field>
+    <field name="user_permissions" rel="ManyToManyRel" to="auth.permission"></field>
+  </object>
+  <object model="auth.user" pk="7">
+    <field name="password" type="CharField">pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=</field>
+    <field name="last_login" type="DateTimeField"><None></None></field>
+    <field name="is_superuser" type="BooleanField">False</field>
+    <field name="username" type="CharField">ffffff</field>
+    <field name="first_name" type="CharField">fffff</field>
+    <field name="last_name" type="CharField">fffff</field>
+    <field name="email" type="CharField"></field>
+    <field name="is_staff" type="BooleanField">False</field>
+    <field name="is_active" type="BooleanField">True</field>
+    <field name="date_joined" type="DateTimeField">2021-03-02T19:23:58+00:00</field>
+    <field name="groups" rel="ManyToManyRel" to="auth.group"></field>
+    <field name="user_permissions" rel="ManyToManyRel" to="auth.permission"></field>
+  </object>
+  <object model="auth.user" pk="8">
+    <field name="password" type="CharField">pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=</field>
+    <field name="last_login" type="DateTimeField"><None></None></field>
+    <field name="is_superuser" type="BooleanField">False</field>
+    <field name="username" type="CharField">gggggg</field>
+    <field name="first_name" type="CharField">ggggggg</field>
+    <field name="last_name" type="CharField">gggggg</field>
+    <field name="email" type="CharField"></field>
+    <field name="is_staff" type="BooleanField">False</field>
+    <field name="is_active" type="BooleanField">True</field>
+    <field name="date_joined" type="DateTimeField">2021-03-02T19:23:58+00:00</field>
+    <field name="groups" rel="ManyToManyRel" to="auth.group"></field>
+    <field name="user_permissions" rel="ManyToManyRel" to="auth.permission"></field>
+  </object>
+  <object model="auth.user" pk="9">
+    <field name="password" type="CharField">pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=</field>
+    <field name="last_login" type="DateTimeField"><None></None></field>
+    <field name="is_superuser" type="BooleanField">False</field>
+    <field name="username" type="CharField">hhhhhhh</field>
+    <field name="first_name" type="CharField">hhhhhh</field>
+    <field name="last_name" type="CharField">hhhhh</field>
+    <field name="email" type="CharField"></field>
+    <field name="is_staff" type="BooleanField">False</field>
+    <field name="is_active" type="BooleanField">True</field>
+    <field name="date_joined" type="DateTimeField">2021-03-02T19:23:58+00:00</field>
+    <field name="groups" rel="ManyToManyRel" to="auth.group"></field>
+    <field name="user_permissions" rel="ManyToManyRel" to="auth.permission"></field>
+  </object>
+  <object model="auth.user" pk="10">
+    <field name="password" type="CharField">pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=</field>
+    <field name="last_login" type="DateTimeField"><None></None></field>
+    <field name="is_superuser" type="BooleanField">False</field>
+    <field name="username" type="CharField">jjjjjjj</field>
+    <field name="first_name" type="CharField">jjjjj</field>
+    <field name="last_name" type="CharField">jjjjjj</field>
+    <field name="email" type="CharField"></field>
+    <field name="is_staff" type="BooleanField">False</field>
+    <field name="is_active" type="BooleanField">True</field>
+    <field name="date_joined" type="DateTimeField">2021-03-02T19:23:58+00:00</field>
+    <field name="groups" rel="ManyToManyRel" to="auth.group"></field>
+    <field name="user_permissions" rel="ManyToManyRel" to="auth.permission"></field>
+  </object>
+  <object model="auth.user" pk="11">
+    <field name="password" type="CharField">pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=</field>
+    <field name="last_login" type="DateTimeField"><None></None></field>
+    <field name="is_superuser" type="BooleanField">False</field>
+    <field name="username" type="CharField">kkkkkkk</field>
+    <field name="first_name" type="CharField">kkkkkkk</field>
+    <field name="last_name" type="CharField">kkkkkk</field>
+    <field name="email" type="CharField"></field>
+    <field name="is_staff" type="BooleanField">False</field>
+    <field name="is_active" type="BooleanField">True</field>
+    <field name="date_joined" type="DateTimeField">2021-03-02T19:23:58+00:00</field>
+    <field name="groups" rel="ManyToManyRel" to="auth.group"></field>
+    <field name="user_permissions" rel="ManyToManyRel" to="auth.permission"></field>
+  </object>
+  <object model="auth.user" pk="12">
+    <field name="password" type="CharField">pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=</field>
+    <field name="last_login" type="DateTimeField"><None></None></field>
+    <field name="is_superuser" type="BooleanField">False</field>
+    <field name="username" type="CharField">жжжжжж</field>
+    <field name="first_name" type="CharField">жжжжжжж</field>
+    <field name="last_name" type="CharField">жжжжжжж</field>
     <field name="email" type="CharField"></field>
     <field name="is_staff" type="BooleanField">False</field>
     <field name="is_active" type="BooleanField">True</field>
@@ -543,14 +803,14 @@
   </object>
   <object model="sessions.session" pk="ai2nzunsl62tfm4dvbgrryazyy0toskd">
     <field name="session_data" type="TextField">.eJxVjEEOwiAQRe_C2hCkQwGX7nsGMjCDVA0kpV0Z765NutDtf-_9lwi4rSVsnZcwk7iIszj9bhHTg-sO6I711mRqdV3mKHdFHrTLqRE_r4f7d1Cwl29tR9ak9KCjUYwKElsDqDjbMfrsnLPAPqqYBrQ-EwM7rcEw4MBAmsT7A-Q8ODg:1lIFAg:sNNL99HaBPNJkscCUK3SaBMDibfiLDR8ira3hnyqYdI</field>
-    <field name="expire_date" type="DateTimeField">2021-03-19T18:27:30.136507+00:00</field>
+    <field name="expire_date" type="DateTimeField">2021-03-19T18:27:30.136000+00:00</field>
   </object>
   <object model="sessions.session" pk="bo5aoxx5ylwybtogfy6vhpc0t773l63o">
     <field name="session_data" type="TextField">.eJxVjEEOwiAQRe_C2hCkQwGX7nsGMjCDVA0kpV0Z765NutDtf-_9lwi4rSVsnZcwk7iIszj9bhHTg-sO6I711mRqdV3mKHdFHrTLqRE_r4f7d1Cwl29tR9ak9KCjUYwKElsDqDjbMfrsnLPAPqqYBrQ-EwM7rcEw4MBAmsT7A-Q8ODg:1lHAau:abd0qq3D4YAMpT3zVIRbjLRaifQ0cAc_ZjasfBZp7Fo</field>
-    <field name="expire_date" type="DateTimeField">2021-03-16T19:22:08.960189+00:00</field>
+    <field name="expire_date" type="DateTimeField">2021-03-16T19:22:08.960000+00:00</field>
   </object>
   <object model="sessions.session" pk="fcc5qy1c24qflsu0tym3kah9phofru3q">
     <field name="session_data" type="TextField">.eJxVjEEOwiAQRe_C2hCkQwGX7nsGMjCDVA0kpV0Z765NutDtf-_9lwi4rSVsnZcwk7iIszj9bhHTg-sO6I711mRqdV3mKHdFHrTLqRE_r4f7d1Cwl29tR9ak9KCjUYwKElsDqDjbMfrsnLPAPqqYBrQ-EwM7rcEw4MBAmsT7A-Q8ODg:1lT1Ir:uzXElzMuLOIju7BtjJk40PzjS_oHn2uGT2n0j8LVhpw</field>
-    <field name="expire_date" type="DateTimeField">2021-04-18T11:52:29.906918+00:00</field>
+    <field name="expire_date" type="DateTimeField">2021-04-18T11:52:29.906000+00:00</field>
   </object>
 </django-objects>

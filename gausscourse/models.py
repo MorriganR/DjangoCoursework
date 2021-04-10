@@ -39,4 +39,5 @@ class Grade(models.Model):
     course_group = models.ForeignKey(CourseGroup, on_delete=models.CASCADE)
     grade = models.IntegerField(default=0)
     def __str__(self):
-        return self.grade
+        return str(self.grade) + " - " + self.my_user.user.get_full_name() \
+		+ " - " + self.course_group.course.name + " - " + self.course_group.group.name
