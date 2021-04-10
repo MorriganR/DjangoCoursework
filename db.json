@@ -3,7 +3,7 @@
   "model": "gausscourse.course",
   "pk": 1,
   "fields": {
-    "name": "Програмування для UNIX–систем",
+    "name": "РџСЂРѕРіСЂР°РјСѓРІР°РЅРЅСЏ РґР»СЏ UNIXвЂ“СЃРёСЃС‚РµРј",
     "start_date": "2020-03-05T18:30:29Z",
     "finish_date": "2031-03-05T18:31:00Z",
     "is_public": true,
@@ -14,7 +14,7 @@
   "model": "gausscourse.course",
   "pk": 2,
   "fields": {
-    "name": "Технології проектування комп‘ютерних систем",
+    "name": "РўРµС…РЅРѕР»РѕРіС–С— РїСЂРѕРµРєС‚СѓРІР°РЅРЅСЏ РєРѕРјРївЂСЋС‚РµСЂРЅРёС… СЃРёСЃС‚РµРј",
     "start_date": "2019-05-05T18:31:26Z",
     "finish_date": "2034-03-05T18:31:27Z",
     "is_public": true,
@@ -25,7 +25,7 @@
   "model": "gausscourse.course",
   "pk": 3,
   "fields": {
-    "name": "Напівпровідникова електроніка",
+    "name": "РќР°РїС–РІРїСЂРѕРІС–РґРЅРёРєРѕРІР° РµР»РµРєС‚СЂРѕРЅС–РєР°",
     "start_date": "2021-03-05T18:31:58Z",
     "finish_date": "2021-03-05T18:31:59Z",
     "is_public": true,
@@ -36,7 +36,7 @@
   "model": "gausscourse.course",
   "pk": 4,
   "fields": {
-    "name": "Еволюційні обчислення",
+    "name": "Р•РІРѕР»СЋС†С–Р№РЅС– РѕР±С‡РёСЃР»РµРЅРЅСЏ",
     "start_date": "2021-03-05T18:32:22Z",
     "finish_date": "2021-03-06T18:32:24Z",
     "is_public": true,
@@ -47,31 +47,31 @@
   "model": "gausscourse.group",
   "pk": 1,
   "fields": {
-    "name": "3 бакалавр",
-    "curator": "Барабанов О.В."
+    "name": "3 Р±Р°РєР°Р»Р°РІСЂ",
+    "curator": "Р‘Р°СЂР°Р±Р°РЅРѕРІ Рћ.Р’."
   }
 },
 {
   "model": "gausscourse.group",
   "pk": 2,
   "fields": {
-    "name": "2 бакалавр",
-    "curator": "Бойко Ю.В."
+    "name": "2 Р±Р°РєР°Р»Р°РІСЂ",
+    "curator": "Р‘РѕР№РєРѕ Р®.Р’."
   }
 },
 {
   "model": "gausscourse.group",
   "pk": 3,
   "fields": {
-    "name": "1 бакалавр",
-    "curator": "Ольшевський С.В"
+    "name": "1 Р±Р°РєР°Р»Р°РІСЂ",
+    "curator": "РћР»СЊС€РµРІСЃСЊРєРёР№ РЎ.Р’"
   }
 },
 {
   "model": "gausscourse.coursegroup",
   "pk": 1,
   "fields": {
-    "name": "1 бакалавр",
+    "name": "1 Р±Р°РєР°Р»Р°РІСЂ",
     "course": 2,
     "group": 3,
     "is_rate_allowed": true
@@ -81,7 +81,7 @@
   "model": "gausscourse.coursegroup",
   "pk": 2,
   "fields": {
-    "name": "2 бакалавр",
+    "name": "2 Р±Р°РєР°Р»Р°РІСЂ",
     "course": 3,
     "group": 2,
     "is_rate_allowed": true
@@ -91,7 +91,7 @@
   "model": "gausscourse.coursegroup",
   "pk": 3,
   "fields": {
-    "name": "3 бакалавр",
+    "name": "3 Р±Р°РєР°Р»Р°РІСЂ",
     "course": 4,
     "group": 1,
     "is_rate_allowed": true
@@ -101,7 +101,7 @@
   "model": "gausscourse.coursegroup",
   "pk": 4,
   "fields": {
-    "name": "1 бакалавр",
+    "name": "1 Р±Р°РєР°Р»Р°РІСЂ",
     "course": 4,
     "group": 3,
     "is_rate_allowed": true
@@ -189,7 +189,7 @@
     "user": 1,
     "content_type": 7,
     "object_id": "1",
-    "object_repr": "1 бакалавр",
+    "object_repr": "1 Р±Р°РєР°Р»Р°РІСЂ",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -202,7 +202,7 @@
     "user": 1,
     "content_type": 7,
     "object_id": "2",
-    "object_repr": "2 бакалавр",
+    "object_repr": "2 Р±Р°РєР°Р»Р°РІСЂ",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -215,7 +215,7 @@
     "user": 1,
     "content_type": 7,
     "object_id": "3",
-    "object_repr": "3 бакалавр",
+    "object_repr": "3 Р±Р°РєР°Р»Р°РІСЂ",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -228,7 +228,7 @@
     "user": 1,
     "content_type": 8,
     "object_id": "4",
-    "object_repr": "Еволюційні обчислення",
+    "object_repr": "Р•РІРѕР»СЋС†С–Р№РЅС– РѕР±С‡РёСЃР»РµРЅРЅСЏ",
     "action_flag": 2,
     "change_message": "[{\"changed\": {\"fields\": [\"Creator\"]}}]"
   }
@@ -241,7 +241,7 @@
     "user": 1,
     "content_type": 8,
     "object_id": "3",
-    "object_repr": "Напівпровідникова електроніка",
+    "object_repr": "РќР°РїС–РІРїСЂРѕРІС–РґРЅРёРєРѕРІР° РµР»РµРєС‚СЂРѕРЅС–РєР°",
     "action_flag": 2,
     "change_message": "[{\"changed\": {\"fields\": [\"Creator\"]}}]"
   }
@@ -293,7 +293,7 @@
     "user": 1,
     "content_type": 9,
     "object_id": "1",
-    "object_repr": "3 бакалавр",
+    "object_repr": "3 Р±Р°РєР°Р»Р°РІСЂ",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -306,7 +306,7 @@
     "user": 1,
     "content_type": 9,
     "object_id": "2",
-    "object_repr": "2 бакалавр",
+    "object_repr": "2 Р±Р°РєР°Р»Р°РІСЂ",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -319,7 +319,7 @@
     "user": 1,
     "content_type": 9,
     "object_id": "3",
-    "object_repr": "1 бакалавр",
+    "object_repr": "1 Р±Р°РєР°Р»Р°РІСЂ",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -371,7 +371,7 @@
     "user": 1,
     "content_type": 7,
     "object_id": "4",
-    "object_repr": "Еволюційні обчислення - 1 бакалавр",
+    "object_repr": "Р•РІРѕР»СЋС†С–Р№РЅС– РѕР±С‡РёСЃР»РµРЅРЅСЏ - 1 Р±Р°РєР°Р»Р°РІСЂ",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
