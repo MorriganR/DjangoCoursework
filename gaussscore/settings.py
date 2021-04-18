@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.github.GithubOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
 ROOT_URLCONF = 'gaussscore.urls'
 
 TEMPLATES = [
@@ -81,6 +86,10 @@ DATABASES = {
     }
 }
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'login'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -100,6 +109,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+SOCIAL_AUTH_GITHUB_KEY = '1ed7eb5322b850ea3a4c'
+SOCIAL_AUTH_GITHUB_SECRET = '334a94ce7c512be79db38712a88623f59ff1e762'
+# SOCIAL_AUTH_GITHUB_SCOPE = [...]
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

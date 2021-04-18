@@ -1,0 +1,18 @@
+{% extends 'gausscourse/base.html' %}
+{% block title %} Sign in {% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col">
+        <button>
+            <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a>
+        </button>
+        <button>
+            <a href="#">Login with Other
+            </a>
+        </button>
+        <button>
+            <a href="/local/login">Login with Local</a>
+        </button>
+    </div>
+</div>
+{% endblock %}
