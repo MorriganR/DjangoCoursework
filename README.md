@@ -21,9 +21,10 @@ python -m venv venvdev
 pip install -r requirements.txt
 ```
 
-- Init sqlite database
+- Init & restore sqlite database
 ```
 python manage.py migrate
+python manage.py loaddata --format json db.json
 ```
 
 - Run server 
@@ -47,6 +48,7 @@ python manage.py migrate
 
 How to dump/restore the DB:
 ```
-.\manage.py dumpdata --indent 2 --format xml > db.xml
-.\manage.py loaddata db.xml
+python manage.py dumpdata --natural-foreign --natural-primary --indent 2 --format json > db.json
+# Removes all data from the database: python manage.py flush
+python manage.py loaddata --format json db.json
 ```
