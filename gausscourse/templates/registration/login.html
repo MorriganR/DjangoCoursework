@@ -1,0 +1,19 @@
+{% extends 'gausscourse/base.html' %}
+{% block title %} Sign in local {% endblock %}
+{% block content %}
+<div>
+    <form method="post">
+        {% csrf_token %}
+        {% if error %}
+        <div style="color:red;">{{ error }}</div>
+        {% endif %}
+        <div>
+            <label for="username">Ім'я</label>
+            <input type="text" required minlength="3" name="username" class="form-control"/>
+            <label for="username" required>Пароль</label>
+            <input type="password" required minlength="3" name="password" class="form-control"/>
+            <button type="submit" >Зайти</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

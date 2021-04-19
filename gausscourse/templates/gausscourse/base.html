@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Django Coursework</title>
+</head>
+<body>
+    <div>
+        <h1 class="text-center">{% block title %}{% endblock %}</h1>
+        <div>
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>
