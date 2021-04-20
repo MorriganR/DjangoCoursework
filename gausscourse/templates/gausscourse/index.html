@@ -1,5 +1,8 @@
+{% extends 'gausscourse/base.html' %}
+{% block title %} Test Index {% endblock %}
+{% block content %}
 {% if course_list %}
-<table style="width:50%">
+<table style="width:80%">
   <tr>
     <th>name</th>
     <th>start_date</th>
@@ -18,3 +21,4 @@
 {% else %}
     <p>No courses are available.</p>
 {% endif %}
+{% endblock %}

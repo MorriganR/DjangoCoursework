@@ -4,14 +4,28 @@
 <head>
     <meta charset="UTF-8" />
     <title>Django Coursework</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'gausscourse/site.css' %}"/>
 </head>
 <body>
-    <div>
-        <h1 class="text-center">{% block title %}{% endblock %}</h1>
+    <div class="navbar">
+        <a href="{% url 'home' %}" class="navbar-brand">Home</a>
+        <a href="{% url 'index' %}" class="navbar-item">Index</a>
+        <a href="{% url 'login' %}" class="navbar-item">Login</a>
+        <a href="{% url 'logout' %}" class="navbar-item">Logout</a>
+        <a href="{% url 'test' %}" class="navbar-item">Test</a>
+    </div>
+
+    <div class="body-content">
+        <h2 class="text-center">{% block title %}{% endblock %}</h2>
         <div>
             {% block content %}
             {% endblock %}
         </div>
+        <hr/>
+        <footer>
+            <p>DjangoCoursework © 2021</p>
+        </footer>
     </div>
 </body>
 </html>
