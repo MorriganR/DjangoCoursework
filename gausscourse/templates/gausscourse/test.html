@@ -21,4 +21,10 @@
 {% else %}
     <p>No courses are available.</p>
 {% endif %}
+  {% if figure %}
+    {{ figure2|safe }}
+    {{ figure|safe }}
+  {% else %}
+    <p>No figure is available.</p>
+  {% endif %}
 {% endblock %}
