@@ -4,6 +4,7 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 from .models import Course
+from .forms import FilterForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
@@ -16,8 +17,17 @@ def home(request):
 
 def index(request):
     """return HttpResponse("Hello, world. You're at the polls index.")"""
-    course_list = Course.objects.all()
-    context = {'course_list': course_list}
+    if request.method == 'POST':
+        form = FilterForm(request.POST)
+        if form.is_valid():
+            name_filter = form.cleaned_data['name_filter']
+            course_list = Course.objects.filter(name__icontains = name_filter)
+        else:
+            course_list = Course.objects.all()
+    else:
+        form = FilterForm()
+        course_list = Course.objects.all()
+    context = {'course_list': course_list, 'form': form}
     return render(request, 'gausscourse/index.html', context)
 
 def test(request):
