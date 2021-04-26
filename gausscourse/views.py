@@ -7,6 +7,7 @@ from .models import Course
 from .forms import FilterForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
 
 def login(request):
     return render(request, 'gausscourse/login.html')
@@ -15,20 +16,30 @@ def login(request):
 def home(request):
     return render(request, 'gausscourse/home.html')
 
-def index(request):
-    """return HttpResponse("Hello, world. You're at the polls index.")"""
-    if request.method == 'POST':
-        form = FilterForm(request.POST)
-        if form.is_valid():
-            name_filter = form.cleaned_data['name_filter']
-            course_list = Course.objects.filter(name__icontains = name_filter)
+class CourseIndexView(ListView):
+    context_object_name = 'course_list'
+    template_name='gausscourse/index.html'
+
+    # essentially, mirror GET behavior exactly on POST
+    def post(self, *args, **kwargs):
+        return self.get(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(CourseIndexView, self).get_context_data(**kwargs)
+        if 'form' not in context:
+            context['form'] = FilterForm(self.request.POST)
+        return context
+
+    def get_queryset(self):
+        if self.request.method == 'POST':
+            form = FilterForm(self.request.POST)
+            if form.is_valid():
+                name_filter = form.cleaned_data['name_filter']
+                return Course.objects.filter(name__icontains = name_filter)
+            else:
+                return Course.objects.all()
         else:
-            course_list = Course.objects.all()
-    else:
-        form = FilterForm()
-        course_list = Course.objects.all()
-    context = {'course_list': course_list, 'form': form}
-    return render(request, 'gausscourse/index.html', context)
+            return Course.objects.all()
 
 def test(request):
     import matplotlib.pyplot as plt

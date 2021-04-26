@@ -9,5 +9,5 @@ urlpatterns = [
     path('social-auth/', include('social_django.urls', namespace="social")),
     path("login", views.login, name="login"),
     path("home", views.home, name="home"),
-    path('', views.index, name='index'),
+    path('', views.CourseIndexView.as_view(), name='index'),
 ]
