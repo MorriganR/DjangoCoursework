@@ -1,15 +1,18 @@
 {% extends 'gausscourse/base.html' %}
-{% block title %} Test Index {% endblock %}
+{% block title %} i. перелік предметів із можливістю пошуку по назві та сортуванням {% endblock %}
 {% block content %}
-<form action="/" method="post">
-  {% csrf_token %}
+<form action="/" method="get">
   {{ form }}
   <input type="submit" value="Set">
 </form>
 {% if course_list %}
 <table style="width:80%">
   <tr>
-    <th>name</th>
+    {% if form.name_filter.value %}
+    <th><a href="{% url 'index' %}?name_filter={{ form.name_filter.value }}&sort={{ sort }}">Назва предмету</a></th>
+    {% else %}
+    <th><a href="{% url 'index' %}?sort={{ sort }}">Назва предмету</a></th>
+    {% endif %}
     <th>start_date</th>
     <th>finish_date</th>
     <th>creator</th>

@@ -20,22 +20,28 @@ class CourseIndexView(ListView):
     context_object_name = 'course_list'
     template_name='gausscourse/index.html'
 
-    # essentially, mirror GET behavior exactly on POST
-    def post(self, *args, **kwargs):
-        return self.get(*args, **kwargs)
-
     def get_context_data(self, **kwargs):
         context = super(CourseIndexView, self).get_context_data(**kwargs)
         if 'form' not in context:
-            context['form'] = FilterForm(self.request.POST)
+            context['form'] = FilterForm(self.request.GET)
+        sortBy = '-name'
+        if 'sort' in self.request.GET:
+            if self.request.GET['sort'] == 'name':
+                sortBy = '-name'
+            else:
+                sortBy = 'name'
+        context['sort'] = sortBy
         return context
 
     def get_queryset(self):
-        if self.request.method == 'POST':
-            form = FilterForm(self.request.POST)
+        if self.request.method == 'GET':
+            sortBy = 'name'
+            if 'sort' in self.request.GET:
+                sortBy = self.request.GET['sort']
+            form = FilterForm(self.request.GET)
             if form.is_valid():
                 name_filter = form.cleaned_data['name_filter']
-                return Course.objects.filter(name__icontains = name_filter)
+                return Course.objects.filter(name__icontains = name_filter).order_by(sortBy)
             else:
                 return Course.objects.all()
         else:
