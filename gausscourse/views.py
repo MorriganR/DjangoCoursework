@@ -9,9 +9,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 
-def login(request):
-    return render(request, 'gausscourse/login.html')
-
 @login_required
 def home(request):
     return render(request, 'gausscourse/home.html')
