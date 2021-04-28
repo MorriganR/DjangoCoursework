@@ -19,7 +19,7 @@
   </tr>
     {% for course in course_list %}
   <tr>
-    <td>{{ course.name }}</td>
+    <td><a href="{% url 'course'  %}{{ course.id }}">{{ course.name }}</a></td>
     <td>{{ course.start_date }}</td>
     <td>{{ course.finish_date }}</td>
     <td>{{ course.creator.get_full_name }}</td>

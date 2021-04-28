@@ -13,6 +13,9 @@ from django.views.generic import ListView
 def home(request):
     return render(request, 'gausscourse/home.html')
 
+def course_detail(request, course_id=1):
+    return render(request, 'gausscourse/course_detail.html', {'course_id': course_id})
+
 class CourseIndexView(ListView):
     context_object_name = 'course_list'
     template_name='gausscourse/index.html'
