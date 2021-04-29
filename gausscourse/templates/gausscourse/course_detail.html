@@ -1,7 +1,18 @@
 {% extends 'gausscourse/base.html' %}
-{% block title %} Course Detail {% endblock %}
+{% block title %}
+Course Detail - {{ course.name }}<br>
+ii. перегляд розподілу оцінок по кожному предмету у вигляді гістограми,
+де різні групи відображаються різними кольорами стовпчиків.<br>
+{% endblock %}
 {% block content %}
 <div>
-    course_id = {{ course_id }}
+    {% for key, value in group_name.items %}
+        id:{{ key }} {{ course.name }} - {{ value }} <br>
+        {% for key2, value2 in grds.items %}
+            {% if key2 == key %}
+                {{ value2 }} <br><br>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
 </div>
 {% endblock %}

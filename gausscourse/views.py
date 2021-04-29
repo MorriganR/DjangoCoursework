@@ -4,6 +4,8 @@ from django.shortcuts import render
 
 from django.http import HttpResponse
 from .models import Course
+from .models import CourseGroup
+from .models import Grade
 from .forms import FilterForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -14,7 +16,28 @@ def home(request):
     return render(request, 'gausscourse/home.html')
 
 def course_detail(request, course_id=1):
-    return render(request, 'gausscourse/course_detail.html', {'course_id': course_id})
+    course = Course.objects.get(id=course_id)
+    course_groups = list(CourseGroup.objects.filter( course_id = course.id).all())
+    crs_grp_ids = []
+    group_name = {}
+    grds = {}
+    group_name[0] = 'all'
+    grds[0] = []
+    for crs_grp in course_groups:
+        crs_grp_ids.append(crs_grp.id)
+        group_name[crs_grp.id] = crs_grp.group.name
+        grds[crs_grp.id] = []
+        #grd = list(Grade.objects.filter( course_group_id = crs_grp.id).all())
+    grades = list(Grade.objects.filter( course_group_id__in=crs_grp_ids).all())
+    for gr in grades:
+        grds[0].append(gr.grade)
+        grds[gr.course_group_id].append(gr.grade)
+    context = {'course' : course,
+            'course_groups' : course_groups,
+            'crs_grp_ids' : crs_grp_ids,
+            'group_name' : group_name,
+            'grds' : grds}
+    return render(request, 'gausscourse/course_detail.html', context)
 
 class CourseIndexView(ListView):
     context_object_name = 'course_list'
