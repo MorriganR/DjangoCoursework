@@ -18,9 +18,9 @@ def home(request):
 def course_detail(request, course_id=1):
     course = Course.objects.get(id=course_id)
     course_groups = list(CourseGroup.objects.filter( course_id = course.id).all())
-    crs_grp_ids = []
-    group_name = {}
-    grds = {}
+    crs_grp_ids = [] # example list [7, ...]
+    group_name = {}  # example dict {0:'all', 7:'other group', ...}
+    grds = {}        # example dict {0:[56, 99, 88, 77, 82, 66, 78, 75], 7:[56, 99, 88, 77], ...}
     group_name[0] = 'all'
     grds[0] = []
     for crs_grp in course_groups:
@@ -32,12 +32,113 @@ def course_detail(request, course_id=1):
     for gr in grades:
         grds[0].append(gr.grade)
         grds[gr.course_group_id].append(gr.grade)
+    fig_dict = get_fig_dict(grds, group_name)
     context = {'course' : course,
             'course_groups' : course_groups,
             'crs_grp_ids' : crs_grp_ids,
             'group_name' : group_name,
-            'grds' : grds}
+            'grds' : grds,
+            'fig_dict' : fig_dict}
     return render(request, 'gausscourse/course_detail.html', context)
+
+def get_fig_dict(grd_dict, group_name):
+    import matplotlib.pyplot as plt
+    import numpy as np
+    import mpld3 as mpld3
+    from scipy import stats
+
+    x = []              # all grades in one 2-dem list
+    label = []          # group name list
+    num_bins = 11
+    # Start: Set fake data for grades if you have few grades
+    grades_count_min = 4
+    grades_generate_number = 22
+    grades_gen_mu = 88.0
+    grades_gen_sigma = 7.0
+    x0 = np.array([])
+    for grd in grd_dict:
+        xl = np.array(grd_dict[grd])
+        xl = xl[(xl > 0) & (xl < 100)]
+        if xl.size < grades_count_min:
+            xl = grades_gen_mu + grades_gen_sigma * np.random.randn(grades_generate_number)
+            xl = xl[(xl > 0) & (xl < 100)]
+        x.append(xl)
+        label.append(group_name[grd])
+        if grd != 0:
+            x0 = np.concatenate([x0, xl])
+    if x0.size < grades_count_min:
+        x0 = grades_gen_mu + grades_gen_sigma * np.random.randn(grades_generate_number)
+        x0 = x0[(x0 > 0) & (x0 < 100)]
+    x[0] = x0
+    # Stop: Set fake data...
+
+    # Fitting data to normal and beta distribution (for all groups)
+    x4line = np.arange(0, 100, 0.2)
+    mu, sigma = stats.norm.fit(x[0])
+    pdf_norm = stats.norm.pdf(x4line, mu, sigma)
+    params = stats.beta.fit(x[0], floc=0, fscale=100)
+    pdf_beta = stats.beta.pdf(x4line, *params)
+
+    fig, ax = plt.subplots(figsize=(11, 4))
+    fig.subplots_adjust(right=0.7)
+    ax.set_xlim(55, 100)
+    ax.set_xlabel('Grade')
+    ax.set_ylabel('Density of students grades')
+    ax.set_title(f'Test Histogram \u03bc={round(mu, 1)}, \u03C3={round(sigma, 1)} \
+        N={x[0].size}, Beta Params: \
+        {round(params[0],1), round(params[1],1), round(params[2],1), round(params[3],1)}')
+    ax.grid(True, alpha=0.3)
+
+    # generate histogram at temp plot, bins->X n->Y for draw it as line (fill_between)
+    fig_temp, ax_temp = plt.subplots()
+    n, bins, patches = ax_temp.hist(x, num_bins, density=True, histtype='bar', label=label)
+
+    hist_number = len(label)
+    i = -1
+    for n_cur in n:
+        i = i + 1
+        if (n.ndim == 1) or (i == 0):
+            l, = ax.plot(x4line, pdf_norm, '--', lw=3.0, label='Норм Розподіл для всіх')
+            ax.plot(x4line, pdf_beta, ':', lw=3.0, color=l.get_color(), label='Бета Розподіл для всіх')
+            ax.legend(['Norm','Beta'])
+            if (n.ndim == 1):
+                n_new = np.concatenate([n, [0]])
+            else:
+                n_new = np.concatenate([n_cur, [0]])
+        else:
+            mu, sigma = stats.norm.fit(x[i])
+            pdf_norm = stats.norm.pdf(x4line, mu, sigma)
+            l, = ax.plot(x4line, pdf_norm, '--', lw=3.0, label='Норм Розподіл для '+label[i])
+            n_new = np.concatenate([n_cur, [0]])
+        x_array = np.array([bins[0]])
+        y_array = np.array([0.0])
+        for xi, xii, yi in zip(bins, bins[1:], n_new):
+            step = (xii - xi) / hist_number
+            delta = step / 20.0
+            #delta = 0.0
+            step = step - 2 * delta
+            xi_n = xi + step * i
+            xi_0 = xi + step * (i + 1)
+            x_array = np.concatenate([x_array, [xi_n + delta]])
+            y_array = np.concatenate([y_array, [0.0]])
+            x_array = np.concatenate([x_array, [xi_n + delta]])
+            y_array = np.concatenate([y_array, [yi]])
+            x_array = np.concatenate([x_array, [xi_0 - delta]])
+            y_array = np.concatenate([y_array, [yi]])
+            x_array = np.concatenate([x_array, [xi_0 - delta]])
+            y_array = np.concatenate([y_array, [0.0]])
+        ax.fill_between(x_array, y_array, color=l.get_color(), alpha=0.7, label='Гістограма для '+label[i])
+        if (n.ndim == 1):
+            break
+
+    # define interactive legend
+    handles, labels = ax.get_legend_handles_labels() # return lines and labels
+    inter_leg = mpld3.plugins.InteractiveLegendPlugin(handles,labels,alpha_unsel=0.1,alpha_over=1.5,start_visible=True)
+    mpld3.plugins.connect(fig, inter_leg)
+
+    fig_dict = {}
+    fig_dict[0] = mpld3.fig_to_html(fig)
+    return fig_dict
 
 class CourseIndexView(ListView):
     context_object_name = 'course_list'

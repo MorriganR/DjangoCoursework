@@ -6,6 +6,10 @@ ii. перегляд розподілу оцінок по кожному пре�
 {% endblock %}
 {% block content %}
 <div>
+    {% for key, value in fig_dict.items %}
+        {{ value|safe }}
+    {% endfor %}
+
     {% for key, value in group_name.items %}
         id:{{ key }} {{ course.name }} - {{ value }} <br>
         {% for key2, value2 in grds.items %}
