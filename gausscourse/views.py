@@ -10,12 +10,28 @@ from .forms import FilterForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
+from django.db import connection
 
 @login_required
 def home(request):
     return render(request, 'gausscourse/home.html')
 
+def courses_grades_count():
+    with connection.cursor() as cursor:
+        query = """SELECT gausscourse_course.id, gausscourse_course.name,
+                gausscourse_course.is_public, COUNT(gausscourse_grade.grade)
+                FROM gausscourse_course
+                LEFT JOIN gausscourse_coursegroup
+                ON gausscourse_course.id = gausscourse_coursegroup.course_id
+                LEFT JOIN gausscourse_grade
+                ON gausscourse_coursegroup.id = gausscourse_grade.course_group_id
+                GROUP BY gausscourse_course.id"""
+        cursor.execute(query)
+        res_list = cursor.fetchall()
+    return res_list
+
 def course_detail(request, course_id=1):
+    test_list = courses_grades_count()
     course = Course.objects.get(id=course_id)
     course_groups = list(CourseGroup.objects.filter( course_id = course.id).all())
     crs_grp_ids = [] # example list [7, ...]
@@ -155,6 +171,8 @@ class CourseIndexView(ListView):
             else:
                 sortBy = 'name'
         context['sort'] = sortBy
+        test_list = courses_grades_count()
+        context['test_list'] = test_list
         return context
 
     def get_queryset(self):
@@ -165,11 +183,13 @@ class CourseIndexView(ListView):
             form = FilterForm(self.request.GET)
             if form.is_valid():
                 name_filter = form.cleaned_data['name_filter']
-                return Course.objects.filter(name__icontains = name_filter).order_by(sortBy)
+                return_obj = Course.objects.filter(name__icontains = name_filter).order_by(sortBy)
             else:
-                return Course.objects.all()
+                return_obj = Course.objects.all()
         else:
-            return Course.objects.all()
+            return_obj = Course.objects.all()
+        return_list = list(return_obj)
+        return return_list
 
 def test(request):
     import matplotlib.pyplot as plt

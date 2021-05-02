@@ -1,5 +1,8 @@
 {% extends 'gausscourse/base.html' %}
-{% block title %} i. перелік предметів із можливістю пошуку по назві та сортуванням {% endblock %}
+{% block title %}
+ b.i. перелік предметів із можливістю пошуку по назві та сортуванням <br>
+ b.v. на головній сторінці має відображатись розподіл усіх оцінок по усім публічним курсам, наявних у системі і загальна кількість оцінок
+{% endblock %}
 {% block content %}
 <form action="/" method="get">
   {{ form }}
@@ -15,14 +18,20 @@
     {% endif %}
     <th>start_date</th>
     <th>finish_date</th>
-    <th>creator</th>
+    <th>Кількість оцінок</th>
   </tr>
     {% for course in course_list %}
   <tr>
     <td><a href="{% url 'course'  %}{{ course.id }}">{{ course.name }}</a></td>
     <td>{{ course.start_date }}</td>
     <td>{{ course.finish_date }}</td>
-    <td>{{ course.creator.get_full_name }}</td>
+    <td>
+      {% for id, name, public, count in test_list %}
+        {% if id == course.id %}
+          <b>{{ count }}</b>
+        {% endif %}
+      {% endfor %}
+    </td>
   </tr>
     {% endfor %}
 </table>
