@@ -11,4 +11,5 @@ urlpatterns = [
     path('course/', views.course_detail, name='course'),
     path('course/<int:course_id>/', views.course_detail),
     path('', views.CourseIndexView.as_view(), name='index'),
+    
 ]

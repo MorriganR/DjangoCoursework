@@ -17,15 +17,23 @@
     </form>
 </div>
 <div>
-    <button>
+    <br>
+    <br>
+    <br>
+    <br>
+    <button class="button1">
         <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a>
     </button>
-    <button>
-        <a href="#">Login with Google
+    <br>
+    <br>
+    <button class="button2">
+        <a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a>
         </a>
     </button>
-    <button>
-        <a href="#">Login with Facebook</a>
+    <br>
+    <br>
+    <button class="button3">
+        <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
     </button>
 </div>
 {% endblock %}

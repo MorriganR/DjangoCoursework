@@ -26,3 +26,81 @@
     padding: 5px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.button1 
+{    
+    width: 400px;
+    height: 100px;
+  
+     background-color: white;
+    border: 2px solid #555555; 
+      
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;   
+    webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    font-size: 24px;
+}
+.button1:hover
+{
+    background-color: #555555;
+    color: white;
+}
+a
+{
+  color: black;
+    padding: 1em 1.5em;
+  text-decoration: none;
+}
+a:hover
+{
+  color : white;
+}
+
+p {
+    text-indent: 20px; 
+   }
+
+
+.button2
+{    
+    width: 400px;
+    height: 100px;
+     background-color: white;
+  
+    border: 2px solid #FF0000; 
+      
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;   
+    webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    font-size: 24px;
+}
+.button2:hover
+{
+    background-color: #FF0000;
+    color: white;
+}
+
+.button3
+{    
+    width: 400px;
+    height: 100px;
+     background-color: white;
+    
+    border: 2px solid #0000A0; 
+      display:block;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;   
+    webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    font-size: 24px;
+}
+.button3:hover
+{
+    background-color: #0000A0;
+    color: white;
+}
+

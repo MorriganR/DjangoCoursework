@@ -9,15 +9,15 @@
 </head>
 <body>
     <div class="navbar">
-        <a href="{% url 'index' %}" class="navbar-brand">μ</a>
-        <a href="{% url 'home' %}" class="navbar-item">Home</a>
+        <a href="{% url 'index' %}" class="navbar-brand">Головна</a>
+        <a href="{% url 'home' %}" class="navbar-item">Кабінет</a>
         {% if user.is_authenticated %}
             {% if user.is_staff %}
         <a href="/admin/" class="navbar-item">Admin</a>
             {% endif %}
-        <a href="{% url 'logout' %}" class="navbar-item">Logout {{ user.username }}</a>
+        <a href="{% url 'logout' %}" class="navbar-item">Вихід {{ user.first_name|add:' '|add:user.last_name }}</a>
         {% else %}
-        <a href="{% url 'login' %}" class="navbar-item">Login</a>
+        <a href="{% url 'login' %}" class="navbar-item">Вхід</a>
         {% endif %}
         <a href="{% url 'test' %}" class="navbar-item">Test</a>
     </div>

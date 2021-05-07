@@ -25,9 +25,15 @@ SECRET_KEY = '(x6uwf$_s$$e895crc!j^*n*y-8^^6ge!^=4s_$=j%e0%d@n&q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
+ALLOWED_HOSTS = [
+    'coursework.grok.vlabs.knu.ua',
+    
+    '127.0.0.1',
+]
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = False
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = True
 # Application definition
 
 INSTALLED_APPS = [
@@ -39,7 +45,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social_django',
+    
+    
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -49,11 +59,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+
 ]
 ROOT_URLCONF = 'gaussscore.urls'
 
@@ -68,6 +82,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                 'social_django.context_processors.backends',  
+                'social_django.context_processors.login_redirect', 
             ],
         },
     },
@@ -109,8 +125,26 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-SOCIAL_AUTH_GITHUB_KEY = '1ed7eb5322b850ea3a4c'
-SOCIAL_AUTH_GITHUB_SECRET = '334a94ce7c512be79db38712a88623f59ff1e762'
+
+SOCIAL_AUTH_GITHUB_KEY = '1a2ab92ff36396776a1b'
+SOCIAL_AUTH_GITHUB_SECRET = '504b12d9b4d1cdcdf68c95a681af9c1a20492bda'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '975066345885-jocufdsel0s0lvs9lem8fovvv29nl6ag.apps.googleusercontent.com'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'DRqpZMDaMUaJCuiS9W5r541J'
+
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+SOCIAL_AUTH_FACEBOOK_KEY = '464943308093488'
+SOCIAL_AUTH_FACEBOOK_SECRET = '4c25b56c0223b64ebc26bc98c888d032'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email'] 
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {       
+  'fields': 'id, name, email, picture.type(large), link'
+}
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [                 
+    ('name', 'name'),
+    ('email', 'email'),
+    ('picture', 'picture'),
+    ('link', 'profile_url'),
+]
 # SOCIAL_AUTH_GITHUB_SCOPE = [...]
 
 # Internationalization

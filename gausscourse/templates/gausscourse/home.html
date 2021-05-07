@@ -1,7 +1,8 @@
 {% extends 'gausscourse/base.html' %}
-{% block title %} Home {% endblock %}
+
 {% block content %}
 <div>
-    Welcome {{ user.username }}
+    Welcome, slave: {{ user.first_name|add:' '|add:user.last_name }}
+</p> Do u want to be a network master?
 </div>
 {% endblock %}
