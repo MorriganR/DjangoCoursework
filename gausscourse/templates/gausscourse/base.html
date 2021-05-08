@@ -15,7 +15,13 @@
             {% if user.is_staff %}
         <a href="/admin/" class="navbar-item">Admin</a>
             {% endif %}
-        <a href="{% url 'logout' %}" class="navbar-item">Вихід {{ user.first_name|add:' '|add:user.last_name }}</a>
+        <a href="{% url 'logout' %}" class="navbar-item">Вихід
+            {% if user.first_name or user.last_name %}
+                {{ user.first_name|add:' '|add:user.last_name }}
+            {% else %}
+                {{ user.username }}
+            {% endif %}
+        </a>
         {% else %}
         <a href="{% url 'login' %}" class="navbar-item">Вхід</a>
         {% endif %}

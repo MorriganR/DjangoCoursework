@@ -2,7 +2,11 @@
 
 {% block content %}
 <div>
+  {% if user.first_name or user.last_name %}
     Welcome, slave: {{ user.first_name|add:' '|add:user.last_name }}
-</p> 
+  {% else %}
+    Welcome: {{ user.username }}
+  {% endif %}
+</p>
 </div>
 {% endblock %}
