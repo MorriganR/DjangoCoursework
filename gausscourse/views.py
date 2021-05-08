@@ -14,7 +14,9 @@ from django.db import connection
 
 @login_required
 def home(request):
-    return render(request, 'gausscourse/home.html')
+    user_grades = list(Grade.objects.filter( user=request.user ).all())
+    context = {'user_grades' : user_grades}
+    return render(request, 'gausscourse/home.html', context)
 
 def courses_grades_count():
     with connection.cursor() as cursor:

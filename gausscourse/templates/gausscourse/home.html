@@ -9,4 +9,22 @@
   {% endif %}
 </p>
 </div>
+{% if user_grades %}
+<table>
+  <tr>
+    <th>grade</th>
+    <th>course.name</th>
+    <th>group.name</th>
+  </tr>
+    {% for grade in user_grades %}
+  <tr>
+    <td>{{ grade.grade }}</td>
+    <td><a href="{% url 'course'  %}{{ grade.course_group.course.id }}">{{ grade.course_group.course.name }}</a></td>
+    <td>{{ grade.course_group.group.name }}</td>
+  </tr>
+    {% endfor %}
+</table>
+{% else %}
+    <p>No grades are available.</p>
+{% endif %}
 {% endblock %}
