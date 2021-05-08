@@ -3,98 +3,83 @@
   "model": "gausscourse.course",
   "pk": 1,
   "fields": {
-    "name": "Програмування для UNIX–систем",
-    "start_date": "2020-03-05T18:30:29Z",
-    "finish_date": "2031-03-05T18:31:00Z",
+    "name": "123 Компютерна інженерія",
+    "start_date": "2020-03-05T17:18:27Z",
+    "finish_date": "2031-03-05T17:47:11Z",
     "is_public": true,
-    "is_disabled": false
+    "is_disabled": false,
+    "fig_text": "test",
+    "fig_created": "2021-05-08T17:18:53.178Z",
+    "fig_modified": "2021-05-08T17:47:14.190Z"
   }
 },
 {
   "model": "gausscourse.course",
   "pk": 2,
   "fields": {
-    "name": "Технології проектування комп‘ютерних систем",
-    "start_date": "2019-05-05T18:31:26Z",
-    "finish_date": "2034-03-05T18:31:27Z",
+    "name": "061 Журналістика",
+    "start_date": "2020-05-08T17:19:19Z",
+    "finish_date": "2031-05-08T17:19:29Z",
     "is_public": true,
-    "is_disabled": false
+    "is_disabled": false,
+    "fig_text": "q",
+    "fig_created": "2021-05-08T17:19:32.339Z",
+    "fig_modified": "2021-05-08T17:19:32.339Z"
   }
 },
 {
   "model": "gausscourse.course",
   "pk": 3,
   "fields": {
-    "name": "Напівпровідникова електроніка",
-    "start_date": "2021-03-05T18:31:58Z",
-    "finish_date": "2021-03-05T18:31:59Z",
+    "name": "032 Історія та археологія",
+    "start_date": "2020-05-08T17:20:03Z",
+    "finish_date": "2031-05-08T17:20:07Z",
     "is_public": true,
-    "is_disabled": false
+    "is_disabled": false,
+    "fig_text": "q",
+    "fig_created": "2021-05-08T17:20:12.987Z",
+    "fig_modified": "2021-05-08T17:20:12.987Z"
   }
 },
 {
   "model": "gausscourse.course",
   "pk": 4,
   "fields": {
-    "name": "Еволюційні обчислення",
-    "start_date": "2021-03-05T18:32:22Z",
-    "finish_date": "2021-03-06T18:32:24Z",
+    "name": "104 Фізика та астрономія (Фізфак)",
+    "start_date": "2020-05-08T17:20:38Z",
+    "finish_date": "2031-05-08T17:20:44Z",
     "is_public": true,
-    "is_disabled": false
-  }
-},
-{
-  "model": "gausscourse.course",
-  "pk": 5,
-  "fields": {
-    "name": "Схемотехніка",
-    "start_date": "2021-04-10T19:15:49Z",
-    "finish_date": "2021-04-29T12:00:00Z",
-    "is_public": true,
-    "is_disabled": false
+    "is_disabled": false,
+    "fig_text": "q",
+    "fig_created": "2021-05-08T17:20:48.117Z",
+    "fig_modified": "2021-05-08T17:20:48.117Z"
   }
 },
 {
   "model": "gausscourse.group",
   "pk": 1,
   "fields": {
-    "name": "3 бакалавр",
-    "curator": "Барабанов О.В."
-  }
-},
-{
-  "model": "gausscourse.group",
-  "pk": 2,
-  "fields": {
-    "name": "2 бакалавр",
-    "curator": "Бойко Ю.В."
-  }
-},
-{
-  "model": "gausscourse.group",
-  "pk": 3,
-  "fields": {
-    "name": "1 бакалавр",
-    "curator": "Ольшевський С.В"
+    "name": "2020 3-курс 1-семестр",
+    "curator": "none"
   }
 },
 {
   "model": "gausscourse.coursegroup",
   "pk": 1,
   "fields": {
-    "name": "1 бакалавр",
+    "name": "-",
+    "course": 1,
+    "group": 1,
+    "is_rate_allowed": true
+  }
+},
+{
+  "model": "gausscourse.coursegroup",
+  "pk": 2,
+  "fields": {
+    "name": "-",
     "course": 2,
-    "group": 3,
-    "is_rate_allowed": true
-  }
-},
-{
-  "model": "gausscourse.coursegroup",
-  "pk": 2,
-  "fields": {
-    "name": "2 бакалавр",
-    "course": 3,
-    "group": 2,
+    "group": 1,
     "is_rate_allowed": true
   }
 },
@@ -102,8 +87,8 @@
   "model": "gausscourse.coursegroup",
   "pk": 3,
   "fields": {
-    "name": "3 бакалавр",
-    "course": 4,
+    "name": "-",
+    "course": 3,
     "group": 1,
     "is_rate_allowed": true
   }
@@ -112,40 +97,45 @@
   "model": "gausscourse.coursegroup",
   "pk": 4,
   "fields": {
-    "name": "1 бакалавр",
+    "name": "-",
     "course": 4,
-    "group": 3,
+    "group": 1,
     "is_rate_allowed": true
   }
 },
 {
-  "model": "gausscourse.grade",
-  "pk": 1,
+  "model": "contenttypes.contenttype",
   "fields": {
-    "name": "ddg",
-    "my_user": 1,
-    "course_group": 1,
-    "grade": 56
+    "app_label": "gausscourse",
+    "model": "course"
   }
 },
 {
-  "model": "gausscourse.grade",
-  "pk": 2,
+  "model": "contenttypes.contenttype",
   "fields": {
-    "name": "11",
-    "my_user": 1,
-    "course_group": 1,
-    "grade": 22
+    "app_label": "gausscourse",
+    "model": "coursegroup"
   }
 },
 {
-  "model": "gausscourse.grade",
-  "pk": 3,
+  "model": "contenttypes.contenttype",
   "fields": {
-    "name": "11",
-    "my_user": 1,
-    "course_group": 1,
-    "grade": 23
+    "app_label": "gausscourse",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "gausscourse",
+    "model": "myuser"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "fields": {
+    "app_label": "gausscourse",
+    "model": "grade"
   }
 },
 {
@@ -193,41 +183,6 @@
 {
   "model": "contenttypes.contenttype",
   "fields": {
-    "app_label": "gausscourse",
-    "model": "coursegroup"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "fields": {
-    "app_label": "gausscourse",
-    "model": "course"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "fields": {
-    "app_label": "gausscourse",
-    "model": "group"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "fields": {
-    "app_label": "gausscourse",
-    "model": "myuser"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "fields": {
-    "app_label": "gausscourse",
-    "model": "grade"
-  }
-},
-{
-  "model": "contenttypes.contenttype",
-  "fields": {
     "app_label": "social_django",
     "model": "association"
   }
@@ -262,26 +217,230 @@
 },
 {
   "model": "sessions.session",
-  "pk": "ai2nzunsl62tfm4dvbgrryazyy0toskd",
+  "pk": "1rh5c6n11nwdn61prlu5u1yr2adh4nrk",
   "fields": {
-    "session_data": ".eJxVjEEOwiAQRe_C2hCkQwGX7nsGMjCDVA0kpV0Z765NutDtf-_9lwi4rSVsnZcwk7iIszj9bhHTg-sO6I711mRqdV3mKHdFHrTLqRE_r4f7d1Cwl29tR9ak9KCjUYwKElsDqDjbMfrsnLPAPqqYBrQ-EwM7rcEw4MBAmsT7A-Q8ODg:1lIFAg:sNNL99HaBPNJkscCUK3SaBMDibfiLDR8ira3hnyqYdI",
-    "expire_date": "2021-03-19T18:27:30.136Z"
+    "session_data": ".eJxVjDkOwjAUBe_iGlneiSnpOYP1FxsHkCPFSYW4O7KUAto3M-8tEuxbTXvPa5pZXIQWp98NgZ65DcAPaPdF0tK2dUY5FHnQLm8L59f1cP8OKvQ6am88GvaTLZmiJ83ZKRUAECEGV7xD1qCDIWeUtUVPZO2ZXA5RK2AWny_wtDgV:1lfQVK:naR9lvRgiLOjG9LfiN7JDQGkOvzq41AWZS9fOWZDomQ",
+    "expire_date": "2021-05-22T17:12:38.522Z"
   }
 },
 {
-  "model": "sessions.session",
-  "pk": "bo5aoxx5ylwybtogfy6vhpc0t773l63o",
+  "model": "auth.permission",
   "fields": {
-    "session_data": ".eJxVjEEOwiAQRe_C2hCkQwGX7nsGMjCDVA0kpV0Z765NutDtf-_9lwi4rSVsnZcwk7iIszj9bhHTg-sO6I711mRqdV3mKHdFHrTLqRE_r4f7d1Cwl29tR9ak9KCjUYwKElsDqDjbMfrsnLPAPqqYBrQ-EwM7rcEw4MBAmsT7A-Q8ODg:1lHAau:abd0qq3D4YAMpT3zVIRbjLRaifQ0cAc_ZjasfBZp7Fo",
-    "expire_date": "2021-03-16T19:22:08.960Z"
+    "name": "Can add course",
+    "content_type": [
+      "gausscourse",
+      "course"
+    ],
+    "codename": "add_course"
   }
 },
 {
-  "model": "sessions.session",
-  "pk": "fcc5qy1c24qflsu0tym3kah9phofru3q",
+  "model": "auth.permission",
   "fields": {
-    "session_data": ".eJxVjEEOwiAQRe_C2hCkQwGX7nsGMjCDVA0kpV0Z765NutDtf-_9lwi4rSVsnZcwk7iIszj9bhHTg-sO6I711mRqdV3mKHdFHrTLqRE_r4f7d1Cwl29tR9ak9KCjUYwKElsDqDjbMfrsnLPAPqqYBrQ-EwM7rcEw4MBAmsT7A-Q8ODg:1lT1Ir:uzXElzMuLOIju7BtjJk40PzjS_oHn2uGT2n0j8LVhpw",
-    "expire_date": "2021-04-18T11:52:29.906Z"
+    "name": "Can change course",
+    "content_type": [
+      "gausscourse",
+      "course"
+    ],
+    "codename": "change_course"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete course",
+    "content_type": [
+      "gausscourse",
+      "course"
+    ],
+    "codename": "delete_course"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view course",
+    "content_type": [
+      "gausscourse",
+      "course"
+    ],
+    "codename": "view_course"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add course group",
+    "content_type": [
+      "gausscourse",
+      "coursegroup"
+    ],
+    "codename": "add_coursegroup"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change course group",
+    "content_type": [
+      "gausscourse",
+      "coursegroup"
+    ],
+    "codename": "change_coursegroup"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete course group",
+    "content_type": [
+      "gausscourse",
+      "coursegroup"
+    ],
+    "codename": "delete_coursegroup"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view course group",
+    "content_type": [
+      "gausscourse",
+      "coursegroup"
+    ],
+    "codename": "view_coursegroup"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add group",
+    "content_type": [
+      "gausscourse",
+      "group"
+    ],
+    "codename": "add_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change group",
+    "content_type": [
+      "gausscourse",
+      "group"
+    ],
+    "codename": "change_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete group",
+    "content_type": [
+      "gausscourse",
+      "group"
+    ],
+    "codename": "delete_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view group",
+    "content_type": [
+      "gausscourse",
+      "group"
+    ],
+    "codename": "view_group"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add my user",
+    "content_type": [
+      "gausscourse",
+      "myuser"
+    ],
+    "codename": "add_myuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change my user",
+    "content_type": [
+      "gausscourse",
+      "myuser"
+    ],
+    "codename": "change_myuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete my user",
+    "content_type": [
+      "gausscourse",
+      "myuser"
+    ],
+    "codename": "delete_myuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view my user",
+    "content_type": [
+      "gausscourse",
+      "myuser"
+    ],
+    "codename": "view_myuser"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can add grade",
+    "content_type": [
+      "gausscourse",
+      "grade"
+    ],
+    "codename": "add_grade"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can change grade",
+    "content_type": [
+      "gausscourse",
+      "grade"
+    ],
+    "codename": "change_grade"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can delete grade",
+    "content_type": [
+      "gausscourse",
+      "grade"
+    ],
+    "codename": "delete_grade"
+  }
+},
+{
+  "model": "auth.permission",
+  "fields": {
+    "name": "Can view grade",
+    "content_type": [
+      "gausscourse",
+      "grade"
+    ],
+    "codename": "view_grade"
   }
 },
 {
@@ -551,226 +710,6 @@
 {
   "model": "auth.permission",
   "fields": {
-    "name": "Can add course group",
-    "content_type": [
-      "gausscourse",
-      "coursegroup"
-    ],
-    "codename": "add_coursegroup"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change course group",
-    "content_type": [
-      "gausscourse",
-      "coursegroup"
-    ],
-    "codename": "change_coursegroup"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete course group",
-    "content_type": [
-      "gausscourse",
-      "coursegroup"
-    ],
-    "codename": "delete_coursegroup"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view course group",
-    "content_type": [
-      "gausscourse",
-      "coursegroup"
-    ],
-    "codename": "view_coursegroup"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add course",
-    "content_type": [
-      "gausscourse",
-      "course"
-    ],
-    "codename": "add_course"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change course",
-    "content_type": [
-      "gausscourse",
-      "course"
-    ],
-    "codename": "change_course"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete course",
-    "content_type": [
-      "gausscourse",
-      "course"
-    ],
-    "codename": "delete_course"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view course",
-    "content_type": [
-      "gausscourse",
-      "course"
-    ],
-    "codename": "view_course"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add group",
-    "content_type": [
-      "gausscourse",
-      "group"
-    ],
-    "codename": "add_group"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change group",
-    "content_type": [
-      "gausscourse",
-      "group"
-    ],
-    "codename": "change_group"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete group",
-    "content_type": [
-      "gausscourse",
-      "group"
-    ],
-    "codename": "delete_group"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view group",
-    "content_type": [
-      "gausscourse",
-      "group"
-    ],
-    "codename": "view_group"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add my user",
-    "content_type": [
-      "gausscourse",
-      "myuser"
-    ],
-    "codename": "add_myuser"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change my user",
-    "content_type": [
-      "gausscourse",
-      "myuser"
-    ],
-    "codename": "change_myuser"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete my user",
-    "content_type": [
-      "gausscourse",
-      "myuser"
-    ],
-    "codename": "delete_myuser"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view my user",
-    "content_type": [
-      "gausscourse",
-      "myuser"
-    ],
-    "codename": "view_myuser"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can add grade",
-    "content_type": [
-      "gausscourse",
-      "grade"
-    ],
-    "codename": "add_grade"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can change grade",
-    "content_type": [
-      "gausscourse",
-      "grade"
-    ],
-    "codename": "change_grade"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can delete grade",
-    "content_type": [
-      "gausscourse",
-      "grade"
-    ],
-    "codename": "delete_grade"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
-    "name": "Can view grade",
-    "content_type": [
-      "gausscourse",
-      "grade"
-    ],
-    "codename": "view_grade"
-  }
-},
-{
-  "model": "auth.permission",
-  "fields": {
     "name": "Can add association",
     "content_type": [
       "social_django",
@@ -991,16 +930,16 @@
 {
   "model": "auth.user",
   "fields": {
-    "password": "pbkdf2_sha256$216000$1it0IRmmKPvJ$XXn9v+f4QzwBHzNMdc/MLqZny+6Hb4bFKL0LpRlfE8A=",
-    "last_login": "2021-04-18T22:06:45.322Z",
+    "password": "pbkdf2_sha256$216000$oTfnNl4eCZDv$7yjgvYbzJVRyz+y+9mHgwlqngWyWc4cCpNvzYIQ9BXc=",
+    "last_login": "2021-05-08T17:12:38.437Z",
     "is_superuser": true,
     "username": "admin",
-    "first_name": "D",
-    "last_name": "D",
-    "email": "admin@gauss.com",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
     "is_staff": true,
     "is_active": true,
-    "date_joined": "2021-03-02T19:21:44Z",
+    "date_joined": "2021-05-08T17:11:19.840Z",
     "groups": [],
     "user_permissions": []
   }
@@ -1008,226 +947,161 @@
 {
   "model": "auth.user",
   "fields": {
-    "password": "pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=",
+    "password": "pbkdf2_sha256$216000$kU4GIH2Gdfy4$CeUya07UNBiN3NVXehjB/2J1jPUyuH9IiyuofkRK4UQ=",
     "last_login": null,
     "is_superuser": false,
-    "username": "Aaaaa",
-    "first_name": "Aaaaa",
-    "last_name": "Aaaaa",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2021-03-02T19:23:58Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "Bbbbb",
-    "first_name": "Bbbbb",
-    "last_name": "Bbbbb",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2021-03-02T19:23:58Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "ccccc",
-    "first_name": "ccccc",
-    "last_name": "ccccc",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2021-03-02T19:23:58Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "ddddd",
-    "first_name": "ddddd",
-    "last_name": "dddddd",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2021-03-02T19:23:58Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "eeeeeee",
-    "first_name": "eeeeee",
-    "last_name": "eeeee",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2021-03-02T19:23:58Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "ffffff",
-    "first_name": "fffff",
-    "last_name": "fffff",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2021-03-02T19:23:58Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "gggggg",
-    "first_name": "ggggggg",
-    "last_name": "gggggg",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2021-03-02T19:23:58Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "hhhhhhh",
-    "first_name": "hhhhhh",
-    "last_name": "hhhhh",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2021-03-02T19:23:58Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "jjjjjjj",
-    "first_name": "jjjjj",
-    "last_name": "jjjjjj",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2021-03-02T19:23:58Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "kkkkkkk",
-    "first_name": "kkkkkkk",
-    "last_name": "kkkkkk",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2021-03-02T19:23:58Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "pbkdf2_sha256$216000$Hq4XHka6rMRZ$rkz7TDdCfWbQ+yVfGMxBG/MCe+c5/Ad3rZcuR15MHfw=",
-    "last_login": null,
-    "is_superuser": false,
-    "username": "жжжжжж",
-    "first_name": "жжжжжжж",
-    "last_name": "жжжжжжж",
-    "email": "",
-    "is_staff": false,
-    "is_active": true,
-    "date_joined": "2021-03-02T19:23:58Z",
-    "groups": [],
-    "user_permissions": []
-  }
-},
-{
-  "model": "auth.user",
-  "fields": {
-    "password": "!zJ1wAytjffufdC8GTIZgZj7JFfxlHm08LYFBxVcw",
-    "last_login": "2021-04-18T16:44:44.560Z",
-    "is_superuser": false,
-    "username": "MorriganR",
+    "username": "userA",
     "first_name": "",
     "last_name": "",
     "email": "",
     "is_staff": false,
     "is_active": true,
-    "date_joined": "2021-04-18T15:07:21.812Z",
+    "date_joined": "2021-05-08T17:13:46.450Z",
     "groups": [],
     "user_permissions": []
   }
 },
 {
-  "model": "social_django.usersocialauth",
-  "pk": 1,
+  "model": "auth.user",
   "fields": {
-    "user": [
-      "MorriganR"
-    ],
-    "provider": "github",
-    "uid": "31573086",
-    "extra_data": "{\"auth_time\": 1618764284, \"id\": 31573086, \"expires\": null, \"login\": \"MorriganR\", \"access_token\": \"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\", \"token_type\": \"bearer\"}",
-    "created": "2021-04-18T15:07:21.913Z",
-    "modified": "2021-04-18T16:44:44.124Z"
+    "password": "pbkdf2_sha256$216000$0XjBpsuoMLKB$jA/rNmNPf/N5vfZSHgpAtUJdryOHDrxgS3mDE6CM4os=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "userB",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-05-08T17:14:10.354Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$216000$8tA2toKF34RU$0c6uKwy70hpmKu4/Rkrqlq2n1OiJzJjB1CkUeImobnk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "userC",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-05-08T17:14:29.143Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$216000$Jzn8SwDXQIZN$HzzVRhVU4ttDe5f329F8SLOPY/7XK6crCRm/BXQxmv0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "userD",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-05-08T17:14:50.056Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$216000$ZT7WCZ0x6pmT$zsecMB2WLBt2jejoEcBdBllLydgkeHsgs5BJI5IIOS8=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "userE",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-05-08T17:15:10.034Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$216000$ZmAAzlolyLHc$h8d7f33ILhWAq3ggFCHRVpWn9e/qaUp2txP0hdWdDAY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "userF",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-05-08T17:15:25.519Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$216000$pkoxiMw0sZp8$CbnXZQuEWKOJYP+oqTWn961mPIxOzpn4f+TlTspYng0=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "userG",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-05-08T17:15:43.447Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$216000$sD63aRGEn6bq$aBp0QBfF5ybCJY9k1xkt+U9RXY/NDkY7fnCnytJXSUk=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "userH",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-05-08T17:16:00.975Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$216000$m4MXMstRQdQF$ZM9ZLRs69DQhFc2KZTByIJPByCN2xS6Le2wRzx5GZ2I=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "userJ",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2021-05-08T17:16:23.416Z",
+    "groups": [],
+    "user_permissions": []
   }
 },
 {
   "model": "admin.logentry",
   "pk": 1,
   "fields": {
-    "action_time": "2021-03-02T19:23:58.496Z",
+    "action_time": "2021-05-08T17:13:46.589Z",
     "user": [
       "admin"
     ],
@@ -1236,7 +1110,7 @@
       "user"
     ],
     "object_id": "2",
-    "object_repr": "user",
+    "object_repr": "userA",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -1245,16 +1119,16 @@
   "model": "admin.logentry",
   "pk": 2,
   "fields": {
-    "action_time": "2021-03-05T18:31:02.832Z",
+    "action_time": "2021-05-08T17:14:10.494Z",
     "user": [
       "admin"
     ],
     "content_type": [
-      "gausscourse",
-      "course"
+      "auth",
+      "user"
     ],
-    "object_id": "1",
-    "object_repr": "Course object (1)",
+    "object_id": "3",
+    "object_repr": "userB",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -1263,16 +1137,16 @@
   "model": "admin.logentry",
   "pk": 3,
   "fields": {
-    "action_time": "2021-03-05T18:31:35.416Z",
+    "action_time": "2021-05-08T17:14:29.282Z",
     "user": [
       "admin"
     ],
     "content_type": [
-      "gausscourse",
-      "course"
+      "auth",
+      "user"
     ],
-    "object_id": "2",
-    "object_repr": "Course object (2)",
+    "object_id": "4",
+    "object_repr": "userC",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -1281,16 +1155,16 @@
   "model": "admin.logentry",
   "pk": 4,
   "fields": {
-    "action_time": "2021-03-05T18:32:02.402Z",
+    "action_time": "2021-05-08T17:14:50.197Z",
     "user": [
       "admin"
     ],
     "content_type": [
-      "gausscourse",
-      "course"
+      "auth",
+      "user"
     ],
-    "object_id": "3",
-    "object_repr": "Course object (3)",
+    "object_id": "5",
+    "object_repr": "userD",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -1299,16 +1173,16 @@
   "model": "admin.logentry",
   "pk": 5,
   "fields": {
-    "action_time": "2021-03-05T18:32:28.655Z",
+    "action_time": "2021-05-08T17:15:10.176Z",
     "user": [
       "admin"
     ],
     "content_type": [
-      "gausscourse",
-      "course"
+      "auth",
+      "user"
     ],
-    "object_id": "4",
-    "object_repr": "Course object (4)",
+    "object_id": "6",
+    "object_repr": "userE",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -1317,16 +1191,16 @@
   "model": "admin.logentry",
   "pk": 6,
   "fields": {
-    "action_time": "2021-03-05T18:37:47.771Z",
+    "action_time": "2021-05-08T17:15:25.660Z",
     "user": [
       "admin"
     ],
     "content_type": [
-      "gausscourse",
-      "coursegroup"
+      "auth",
+      "user"
     ],
-    "object_id": "1",
-    "object_repr": "1 бакалавр",
+    "object_id": "7",
+    "object_repr": "userF",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -1335,16 +1209,16 @@
   "model": "admin.logentry",
   "pk": 7,
   "fields": {
-    "action_time": "2021-03-05T18:38:11.419Z",
+    "action_time": "2021-05-08T17:15:43.588Z",
     "user": [
       "admin"
     ],
     "content_type": [
-      "gausscourse",
-      "coursegroup"
+      "auth",
+      "user"
     ],
-    "object_id": "2",
-    "object_repr": "2 бакалавр",
+    "object_id": "8",
+    "object_repr": "userG",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -1353,16 +1227,16 @@
   "model": "admin.logentry",
   "pk": 8,
   "fields": {
-    "action_time": "2021-03-05T18:38:31.773Z",
+    "action_time": "2021-05-08T17:16:01.119Z",
     "user": [
       "admin"
     ],
     "content_type": [
-      "gausscourse",
-      "coursegroup"
+      "auth",
+      "user"
     ],
-    "object_id": "3",
-    "object_repr": "3 бакалавр",
+    "object_id": "9",
+    "object_repr": "userH",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -1371,7 +1245,25 @@
   "model": "admin.logentry",
   "pk": 9,
   "fields": {
-    "action_time": "2021-03-17T09:51:12.724Z",
+    "action_time": "2021-05-08T17:16:23.556Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "10",
+    "object_repr": "userJ",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2021-05-08T17:18:53.180Z",
     "user": [
       "admin"
     ],
@@ -1379,17 +1271,35 @@
       "gausscourse",
       "course"
     ],
-    "object_id": "4",
-    "object_repr": "Еволюційні обчислення",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Creator\"]}}]"
+    "object_id": "1",
+    "object_repr": "123 Компютерна інженерія",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
   }
 },
 {
   "model": "admin.logentry",
-  "pk": 10,
+  "pk": 11,
   "fields": {
-    "action_time": "2021-03-17T09:51:16.285Z",
+    "action_time": "2021-05-08T17:19:32.342Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "gausscourse",
+      "course"
+    ],
+    "object_id": "2",
+    "object_repr": "061 Журналістика",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2021-05-08T17:20:13.002Z",
     "user": [
       "admin"
     ],
@@ -1398,61 +1308,25 @@
       "course"
     ],
     "object_id": "3",
-    "object_repr": "Напівпровідникова електроніка",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Creator\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 11,
-  "fields": {
-    "action_time": "2021-03-17T09:54:03.886Z",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "1",
-    "object_repr": "admin",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 12,
-  "fields": {
-    "action_time": "2021-03-17T09:54:13.106Z",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "auth",
-      "user"
-    ],
-    "object_id": "2",
-    "object_repr": "user",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]"
+    "object_repr": "032 Історія та археологія",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
   }
 },
 {
   "model": "admin.logentry",
   "pk": 13,
   "fields": {
-    "action_time": "2021-04-04T11:53:19.631Z",
+    "action_time": "2021-05-08T17:20:48.180Z",
     "user": [
       "admin"
     ],
     "content_type": [
       "gausscourse",
-      "myuser"
+      "course"
     ],
-    "object_id": "1",
-    "object_repr": "dd - R R",
+    "object_id": "4",
+    "object_repr": "104 Фізика та астрономія (Фізфак)",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -1461,7 +1335,7 @@
   "model": "admin.logentry",
   "pk": 14,
   "fields": {
-    "action_time": "2021-04-04T11:59:07.824Z",
+    "action_time": "2021-05-08T17:21:30.827Z",
     "user": [
       "admin"
     ],
@@ -1470,7 +1344,7 @@
       "group"
     ],
     "object_id": "1",
-    "object_repr": "3 бакалавр",
+    "object_repr": "2020 3-курс 1-семестр",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -1479,16 +1353,16 @@
   "model": "admin.logentry",
   "pk": 15,
   "fields": {
-    "action_time": "2021-04-04T11:59:14.678Z",
+    "action_time": "2021-05-08T17:21:48.170Z",
     "user": [
       "admin"
     ],
     "content_type": [
       "gausscourse",
-      "group"
+      "coursegroup"
     ],
-    "object_id": "2",
-    "object_repr": "2 бакалавр",
+    "object_id": "1",
+    "object_repr": "123 Компютерна інженерія - 2020 3-курс 1-семестр",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -1497,16 +1371,16 @@
   "model": "admin.logentry",
   "pk": 16,
   "fields": {
-    "action_time": "2021-04-04T11:59:23.262Z",
+    "action_time": "2021-05-08T17:21:59.304Z",
     "user": [
       "admin"
     ],
     "content_type": [
       "gausscourse",
-      "group"
+      "coursegroup"
     ],
-    "object_id": "3",
-    "object_repr": "1 бакалавр",
+    "object_id": "2",
+    "object_repr": "061 Журналістика - 2020 3-курс 1-семестр",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
@@ -1515,7 +1389,7 @@
   "model": "admin.logentry",
   "pk": 17,
   "fields": {
-    "action_time": "2021-04-04T11:59:33.927Z",
+    "action_time": "2021-05-08T17:22:07.664Z",
     "user": [
       "admin"
     ],
@@ -1524,52 +1398,16 @@
       "coursegroup"
     ],
     "object_id": "3",
-    "object_repr": "CourseGroup object (3)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Group\"]}}]"
+    "object_repr": "032 Історія та археологія - 2020 3-курс 1-семестр",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
   }
 },
 {
   "model": "admin.logentry",
   "pk": 18,
   "fields": {
-    "action_time": "2021-04-04T11:59:39.077Z",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "gausscourse",
-      "coursegroup"
-    ],
-    "object_id": "2",
-    "object_repr": "CourseGroup object (2)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Group\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 19,
-  "fields": {
-    "action_time": "2021-04-04T11:59:42.767Z",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "gausscourse",
-      "coursegroup"
-    ],
-    "object_id": "1",
-    "object_repr": "CourseGroup object (1)",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"Group\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 20,
-  "fields": {
-    "action_time": "2021-04-04T12:02:57.965Z",
+    "action_time": "2021-05-08T17:22:18.121Z",
     "user": [
       "admin"
     ],
@@ -1578,16 +1416,16 @@
       "coursegroup"
     ],
     "object_id": "4",
-    "object_repr": "Еволюційні обчислення - 1 бакалавр",
+    "object_repr": "104 Фізика та астрономія (Фізфак) - 2020 3-курс 1-семестр",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
 },
 {
   "model": "admin.logentry",
-  "pk": 21,
+  "pk": 19,
   "fields": {
-    "action_time": "2021-04-10T19:04:07.102Z",
+    "action_time": "2021-05-08T17:22:46.148Z",
     "user": [
       "admin"
     ],
@@ -1596,70 +1434,16 @@
       "grade"
     ],
     "object_id": "1",
-    "object_repr": "55",
+    "object_repr": "55 -  - 123 Компютерна інженерія - 2020 3-курс 1-семестр",
     "action_flag": 1,
     "change_message": "[{\"added\": {}}]"
   }
 },
 {
   "model": "admin.logentry",
-  "pk": 22,
+  "pk": 20,
   "fields": {
-    "action_time": "2021-04-10T19:04:42.234Z",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "gausscourse",
-      "grade"
-    ],
-    "object_id": "1",
-    "object_repr": "56",
-    "action_flag": 2,
-    "change_message": "[{\"changed\": {\"fields\": [\"My user\", \"Grade\"]}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 23,
-  "fields": {
-    "action_time": "2021-04-10T19:05:07.427Z",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "gausscourse",
-      "grade"
-    ],
-    "object_id": "2",
-    "object_repr": "22",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 24,
-  "fields": {
-    "action_time": "2021-04-10T19:06:26.771Z",
-    "user": [
-      "admin"
-    ],
-    "content_type": [
-      "gausscourse",
-      "grade"
-    ],
-    "object_id": "3",
-    "object_repr": "23",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
-  }
-},
-{
-  "model": "admin.logentry",
-  "pk": 25,
-  "fields": {
-    "action_time": "2021-04-10T19:15:58.483Z",
+    "action_time": "2021-05-08T17:47:14.198Z",
     "user": [
       "admin"
     ],
@@ -1667,131 +1451,24 @@
       "gausscourse",
       "course"
     ],
-    "object_id": "5",
-    "object_repr": "Схемотехніка",
-    "action_flag": 1,
-    "change_message": "[{\"added\": {}}]"
+    "object_id": "1",
+    "object_repr": "123 Компютерна інженерія",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Date finished\"]}}]"
   }
 },
 {
-  "model": "gausscourse.myuser",
+  "model": "gausscourse.grade",
   "pk": 1,
   "fields": {
-    "name": "dd",
+    "name": "-",
     "user": [
-      "Aaaaa"
+      "userA"
     ],
-    "is_admin": false
-  }
-},
-{
-  "model": "gausscourse.myuser",
-  "pk": 2,
-  "fields": {
-    "name": "dd",
-    "user": [
-      "Bbbbb"
-    ],
-    "is_admin": false
-  }
-},
-{
-  "model": "gausscourse.myuser",
-  "pk": 3,
-  "fields": {
-    "name": "dd",
-    "user": [
-      "ccccc"
-    ],
-    "is_admin": false
-  }
-},
-{
-  "model": "gausscourse.myuser",
-  "pk": 4,
-  "fields": {
-    "name": "dd",
-    "user": [
-      "ddddd"
-    ],
-    "is_admin": false
-  }
-},
-{
-  "model": "gausscourse.myuser",
-  "pk": 5,
-  "fields": {
-    "name": "dd",
-    "user": [
-      "eeeeeee"
-    ],
-    "is_admin": false
-  }
-},
-{
-  "model": "gausscourse.myuser",
-  "pk": 6,
-  "fields": {
-    "name": "dd",
-    "user": [
-      "ffffff"
-    ],
-    "is_admin": false
-  }
-},
-{
-  "model": "gausscourse.myuser",
-  "pk": 7,
-  "fields": {
-    "name": "dd",
-    "user": [
-      "gggggg"
-    ],
-    "is_admin": false
-  }
-},
-{
-  "model": "gausscourse.myuser",
-  "pk": 8,
-  "fields": {
-    "name": "dd",
-    "user": [
-      "hhhhhhh"
-    ],
-    "is_admin": false
-  }
-},
-{
-  "model": "gausscourse.myuser",
-  "pk": 9,
-  "fields": {
-    "name": "dd",
-    "user": [
-      "jjjjjjj"
-    ],
-    "is_admin": false
-  }
-},
-{
-  "model": "gausscourse.myuser",
-  "pk": 10,
-  "fields": {
-    "name": "dd",
-    "user": [
-      "kkkkkkk"
-    ],
-    "is_admin": false
-  }
-},
-{
-  "model": "gausscourse.myuser",
-  "pk": 11,
-  "fields": {
-    "name": "dd",
-    "user": [
-      "жжжжжж"
-    ],
-    "is_admin": false
+    "course_group": 1,
+    "grade": 55,
+    "created": "2021-05-08T17:22:46.143Z",
+    "modified": "2021-05-08T17:22:46.143Z"
   }
 }
 ]
