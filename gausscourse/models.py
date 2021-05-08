@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from unixtimestampfield.fields import UnixTimeStampField
 
 # Create your models here.
 
@@ -11,8 +10,8 @@ class Course(models.Model):
     is_public = models.BooleanField(default=True)
     is_disabled = models.BooleanField(default=False)
     fig_text = models.TextField(default='')
-    fig_created = UnixTimeStampField(auto_now_add=True, default=0)
-    fig_modified = UnixTimeStampField(auto_now=True, default=0)
+    fig_created = models.DateTimeField(auto_now=True)
+    fig_modified = models.DateTimeField()
     def __str__(self):
         return self.name
 
@@ -45,8 +44,8 @@ class Grade(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     course_group = models.ForeignKey(CourseGroup, on_delete=models.CASCADE)
     grade = models.IntegerField(default=0)
-    created = UnixTimeStampField(auto_now_add=True, default=0)
-    modified = UnixTimeStampField(auto_now=True, default=0)
+    created = models.DateTimeField(auto_now_add=True)
+    modified = models.DateTimeField(auto_now=True)
     def __str__(self):
         return str(self.grade) + " - " + self.user.get_full_name() \
             + " - " + self.course_group.course.name + " - " + self.course_group.group.name

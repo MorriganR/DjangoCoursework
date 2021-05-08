@@ -3,7 +3,6 @@
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
-import unixtimestampfield.fields
 
 
 class Migration(migrations.Migration):
@@ -21,12 +20,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='course',
             name='fig_created',
-            field=unixtimestampfield.fields.UnixTimeStampField(auto_now_add=True, default=0),
+            field=models.DateTimeField(auto_now=True),
         ),
         migrations.AddField(
             model_name='course',
             name='fig_modified',
-            field=unixtimestampfield.fields.UnixTimeStampField(auto_now=True, default=0),
+            field=models.DateTimeField(),
         ),
         migrations.AddField(
             model_name='course',
@@ -36,12 +35,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='grade',
             name='created',
-            field=unixtimestampfield.fields.UnixTimeStampField(auto_now_add=True, default=0),
+            field=models.DateTimeField(auto_now_add=True),
         ),
         migrations.AddField(
             model_name='grade',
             name='modified',
-            field=unixtimestampfield.fields.UnixTimeStampField(auto_now=True, default=0),
+            field=models.DateTimeField(auto_now=True),
         ),
         migrations.AddField(
             model_name='grade',
