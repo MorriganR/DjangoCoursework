@@ -64,6 +64,22 @@
   }
 },
 {
+  "model": "gausscourse.group",
+  "pk": 2,
+  "fields": {
+    "name": "2021 3-курс 1-семестр",
+    "curator": "none"
+  }
+},
+{
+  "model": "gausscourse.group",
+  "pk": 3,
+  "fields": {
+    "name": "2000 3-курс 1-семестр",
+    "curator": "none"
+  }
+},
+{
   "model": "gausscourse.coursegroup",
   "pk": 1,
   "fields": {
@@ -100,6 +116,26 @@
     "name": "-",
     "course": 4,
     "group": 1,
+    "is_rate_allowed": true
+  }
+},
+{
+  "model": "gausscourse.coursegroup",
+  "pk": 5,
+  "fields": {
+    "name": "-",
+    "course": 1,
+    "group": 3,
+    "is_rate_allowed": true
+  }
+},
+{
+  "model": "gausscourse.coursegroup",
+  "pk": 6,
+  "fields": {
+    "name": "-",
+    "course": 1,
+    "group": 2,
     "is_rate_allowed": true
   }
 },
@@ -217,10 +253,26 @@
 },
 {
   "model": "sessions.session",
-  "pk": "1rh5c6n11nwdn61prlu5u1yr2adh4nrk",
+  "pk": "5n5guuu8bb1l1f9304y5rp0vfg4klqfc",
   "fields": {
-    "session_data": ".eJxVjDkOwjAUBe_iGlneiSnpOYP1FxsHkCPFSYW4O7KUAto3M-8tEuxbTXvPa5pZXIQWp98NgZ65DcAPaPdF0tK2dUY5FHnQLm8L59f1cP8OKvQ6am88GvaTLZmiJ83ZKRUAECEGV7xD1qCDIWeUtUVPZO2ZXA5RK2AWny_wtDgV:1lfQVK:naR9lvRgiLOjG9LfiN7JDQGkOvzq41AWZS9fOWZDomQ",
-    "expire_date": "2021-05-22T17:12:38.522Z"
+    "session_data": ".eJxVjDkOwjAUBe_iGlneiSnpOYP1FxsHkCPFSYW4O7KUAto3M-8tEuxbTXvPa5pZXIQWp98NgZ65DcAPaPdF0tK2dUY5FHnQLm8L59f1cP8OKvQ6am88GvaTLZmiJ83ZKRUAECEGV7xD1qCDIWeUtUVPZO2ZXA5RK2AWny_wtDgV:1lfhgh:HrlupYyBEfNYl4IkoU_hOOrCiSog6GTMGRo4X1H22X4",
+    "expire_date": "2021-05-23T11:33:31.850Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "ist8bvouwn8nc6vwody0uymub82e57n5",
+  "fields": {
+    "session_data": ".eJxVjL0OAiEQhN-F2pCDXQQt7X0GsvysnBpIjrvK-O5KcoUW08z3zbyEp20tfut58XMSZ6HF4bcLFB-5DpDuVG9NxlbXZQ5yKHKnXV5bys_L7v4dFOrlu3ZB22j5BGZCi3FCQkuU2aEBIiSy2jlORwZWoJUeMQYMWFaJE4r3B9FoNzs:1lfhhJ:zWwHJuniUJbjeJP0O6Ti6lx7TTCgg1_dIejziBu-TvE",
+    "expire_date": "2021-05-23T11:34:09.725Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "vh5bwnn7umk7pcs1wmd3e512gpcon8hz",
+  "fields": {
+    "session_data": ".eJxVjMsOwiAQRf-FtSHlDS7d-w1kYBipGkhKuzL-uzbpQrf3nHNfLMK21riNssQZ2ZkpdvrdEuRHaTvAO7Rb57m3dZkT3xV-0MGvHcvzcrh_BxVG_daCKCCQTcmICQMkZ4lQgiertTVUtHbklNQIhrIMSpgisg4-waSK8ez9AQ17OHQ:1lfghp:ngkH-JASg1WjLshD8szQXUF7sjEutToWgIim1CNO6Ns",
+    "expire_date": "2021-05-23T10:30:37.092Z"
   }
 },
 {
@@ -928,10 +980,106 @@
   }
 },
 {
+  "model": "auth.group",
+  "fields": {
+    "name": "SiteAdmin",
+    "permissions": [
+      [
+        "add_course",
+        "gausscourse",
+        "course"
+      ],
+      [
+        "change_course",
+        "gausscourse",
+        "course"
+      ],
+      [
+        "delete_course",
+        "gausscourse",
+        "course"
+      ],
+      [
+        "view_course",
+        "gausscourse",
+        "course"
+      ],
+      [
+        "add_coursegroup",
+        "gausscourse",
+        "coursegroup"
+      ],
+      [
+        "change_coursegroup",
+        "gausscourse",
+        "coursegroup"
+      ],
+      [
+        "delete_coursegroup",
+        "gausscourse",
+        "coursegroup"
+      ],
+      [
+        "view_coursegroup",
+        "gausscourse",
+        "coursegroup"
+      ],
+      [
+        "add_group",
+        "gausscourse",
+        "group"
+      ],
+      [
+        "change_group",
+        "gausscourse",
+        "group"
+      ],
+      [
+        "delete_group",
+        "gausscourse",
+        "group"
+      ],
+      [
+        "view_group",
+        "gausscourse",
+        "group"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "UserAdmin",
+    "permissions": [
+      [
+        "add_user",
+        "auth",
+        "user"
+      ],
+      [
+        "change_user",
+        "auth",
+        "user"
+      ],
+      [
+        "delete_user",
+        "auth",
+        "user"
+      ],
+      [
+        "view_user",
+        "auth",
+        "user"
+      ]
+    ]
+  }
+},
+{
   "model": "auth.user",
   "fields": {
     "password": "pbkdf2_sha256$216000$oTfnNl4eCZDv$7yjgvYbzJVRyz+y+9mHgwlqngWyWc4cCpNvzYIQ9BXc=",
-    "last_login": "2021-05-08T17:12:38.437Z",
+    "last_login": "2021-05-09T11:33:31.778Z",
     "is_superuser": true,
     "username": "admin",
     "first_name": "",
@@ -948,7 +1096,7 @@
   "model": "auth.user",
   "fields": {
     "password": "pbkdf2_sha256$216000$kU4GIH2Gdfy4$CeUya07UNBiN3NVXehjB/2J1jPUyuH9IiyuofkRK4UQ=",
-    "last_login": null,
+    "last_login": "2021-05-09T11:34:09.632Z",
     "is_superuser": false,
     "username": "userA",
     "first_name": "",
@@ -965,16 +1113,20 @@
   "model": "auth.user",
   "fields": {
     "password": "pbkdf2_sha256$216000$0XjBpsuoMLKB$jA/rNmNPf/N5vfZSHgpAtUJdryOHDrxgS3mDE6CM4os=",
-    "last_login": null,
+    "last_login": "2021-05-09T10:30:36Z",
     "is_superuser": false,
     "username": "userB",
     "first_name": "",
     "last_name": "",
     "email": "",
-    "is_staff": false,
+    "is_staff": true,
     "is_active": true,
-    "date_joined": "2021-05-08T17:14:10.354Z",
-    "groups": [],
+    "date_joined": "2021-05-08T17:14:10Z",
+    "groups": [
+      [
+        "SiteAdmin"
+      ]
+    ],
     "user_permissions": []
   }
 },
@@ -1458,6 +1610,204 @@
   }
 },
 {
+  "model": "admin.logentry",
+  "pk": 21,
+  "fields": {
+    "action_time": "2021-05-09T10:24:00.376Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "3",
+    "object_repr": "userB",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Staff status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 22,
+  "fields": {
+    "action_time": "2021-05-09T10:25:36.062Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "1",
+    "object_repr": "SiteAdmin",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 23,
+  "fields": {
+    "action_time": "2021-05-09T10:25:59.402Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "3",
+    "object_repr": "userB",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 24,
+  "fields": {
+    "action_time": "2021-05-09T10:28:59.925Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "auth",
+      "group"
+    ],
+    "object_id": "2",
+    "object_repr": "UserAdmin",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 25,
+  "fields": {
+    "action_time": "2021-05-09T10:30:05.582Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "3",
+    "object_repr": "userB",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 26,
+  "fields": {
+    "action_time": "2021-05-09T10:31:39.988Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "3",
+    "object_repr": "userB",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Groups\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 27,
+  "fields": {
+    "action_time": "2021-05-09T11:24:26.646Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "gausscourse",
+      "group"
+    ],
+    "object_id": "2",
+    "object_repr": "2021 3-курс 1-семестр",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 28,
+  "fields": {
+    "action_time": "2021-05-09T11:24:48.814Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "gausscourse",
+      "group"
+    ],
+    "object_id": "3",
+    "object_repr": "2000 3-курс 1-семестр",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 29,
+  "fields": {
+    "action_time": "2021-05-09T11:25:13.120Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "gausscourse",
+      "coursegroup"
+    ],
+    "object_id": "5",
+    "object_repr": "123 Компютерна інженерія - 2000 3-курс 1-семестр",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 30,
+  "fields": {
+    "action_time": "2021-05-09T11:25:27.061Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "gausscourse",
+      "coursegroup"
+    ],
+    "object_id": "6",
+    "object_repr": "123 Компютерна інженерія - 2021 3-курс 1-семестр",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 31,
+  "fields": {
+    "action_time": "2021-05-09T11:33:53.838Z",
+    "user": [
+      "admin"
+    ],
+    "content_type": [
+      "gausscourse",
+      "grade"
+    ],
+    "object_id": "1",
+    "object_repr": "55 -  - 123 Компютерна інженерія - 2021 3-курс 1-семестр",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Course group\"]}}]"
+  }
+},
+{
   "model": "gausscourse.grade",
   "pk": 1,
   "fields": {
@@ -1465,10 +1815,10 @@
     "user": [
       "userA"
     ],
-    "course_group": 1,
+    "course_group": 6,
     "grade": 55,
     "created": "2021-05-08T17:22:46.143Z",
-    "modified": "2021-05-08T17:22:46.143Z"
+    "modified": "2021-05-09T11:33:53.833Z"
   }
 }
 ]
