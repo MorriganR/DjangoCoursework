@@ -6,7 +6,7 @@ from django.http import HttpResponse
 from .models import Course
 from .models import CourseGroup
 from .models import Grade
-from .forms import FilterForm
+from .forms import FilterForm, GradeForm
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
@@ -33,6 +33,10 @@ def courses_grades_count():
     return res_list
 
 def course_detail(request, course_id=1):
+    # essentially, mirror GET behavior exactly on POST
+    def post(self, *args, **kwargs):
+        return self.get(*args, **kwargs)
+
     # Prepare data grades for FIG
     test_list = courses_grades_count()
     course = Course.objects.get(id=course_id)
@@ -52,7 +56,8 @@ def course_detail(request, course_id=1):
         grds[0].append(gr.grade)
         grds[gr.course_group_id].append(gr.grade)
     # END Prepare data grades for FIG
-    user_grade = list(Grade.objects.filter( course_group_id__in=crs_grp_ids, user=request.user ).all())[0]
+
+    user_grade = (list(Grade.objects.filter( course_group_id__in=crs_grp_ids, user=request.user ).all()) or [None])[0]
     fig_dict = get_fig_dict(grds, group_name)
     context = {'course' : course,
             'course_groups' : course_groups,
