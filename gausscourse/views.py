@@ -33,6 +33,7 @@ def courses_grades_count():
     return res_list
 
 def course_detail(request, course_id=1):
+    # Prepare data grades for FIG
     test_list = courses_grades_count()
     course = Course.objects.get(id=course_id)
     course_groups = list(CourseGroup.objects.filter( course_id = course.id).all())
@@ -50,13 +51,16 @@ def course_detail(request, course_id=1):
     for gr in grades:
         grds[0].append(gr.grade)
         grds[gr.course_group_id].append(gr.grade)
+    # END Prepare data grades for FIG
+    user_grade = list(Grade.objects.filter( course_group_id__in=crs_grp_ids, user=request.user ).all())[0]
     fig_dict = get_fig_dict(grds, group_name)
     context = {'course' : course,
             'course_groups' : course_groups,
             'crs_grp_ids' : crs_grp_ids,
             'group_name' : group_name,
             'grds' : grds,
-            'fig_dict' : fig_dict}
+            'fig_dict' : fig_dict,
+            'user_grade' : user_grade}
     return render(request, 'gausscourse/course_detail.html', context)
 
 def get_fig_dict(grd_dict, group_name):

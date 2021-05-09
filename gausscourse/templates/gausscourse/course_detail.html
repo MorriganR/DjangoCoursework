@@ -5,6 +5,21 @@ ii. перегляд розподілу оцінок по кожному пре�
 де різні групи відображаються різними кольорами стовпчиків.<br>
 {% endblock %}
 {% block content %}
+<form action="NONE" method="post">
+  <input type="text" value="{{ user_grade.grade }}">
+  <select>
+    <option disabled>Select Group</option>
+    {% for course_group in course_groups %}
+        {% if user_grade.course_group.pk  == course_group.pk  %}
+            <option selected value="{{ course_group.pk }}">{{ course_group.group.name }}</option>
+        {% else %}
+            <option value="{{ course_group.pk }}">{{ course_group.group.name }}</option>
+        {% endif %}
+    {% endfor %}
+  </select>
+    <input type="submit" value="ADD"><input type="submit" value="DEL"><input type="submit" value="MOD">
+</form>
+<br>
 <div>
     {% for key, value in fig_dict.items %}
         {{ value|safe }}
