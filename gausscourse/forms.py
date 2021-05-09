@@ -5,4 +5,5 @@ class FilterForm(forms.Form):
 
 class GradeForm(forms.Form):
     grade = forms.IntegerField()
-    select_course_group = forms.Select
+    course_group_pk = forms.IntegerField()
+    button = forms.CharField(max_length=10, required=True)

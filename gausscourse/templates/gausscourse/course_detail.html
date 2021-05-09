@@ -7,8 +7,8 @@ ii. перегляд розподілу оцінок по кожному пре�
 {% block content %}
 <form method="post">
   {% csrf_token %}
-  <input type="text" value="{{ user_grade.grade }}">
-  <select>
+  <input type="number" name="grade" required id="id_grade" value="{{ user_grade.grade }}">
+  <select name="course_group_pk" required id="id_course_group_pk">
     <option disabled>Select Group</option>
     {% for course_group in course_groups %}
         {% if user_grade.course_group.pk  == course_group.pk  %}
@@ -19,10 +19,18 @@ ii. перегляд розподілу оцінок по кожному пре�
     {% endfor %}
   </select>
     {% if user_grade  %}
-      <input type="submit" value="MOD"><input type="submit" value="DEL">
+      <input type="submit" name="button" id="id_button" value="MOD">
+      <input type="submit" name="button" id="id_button" value="DEL">
     {% else %}
-      <input type="submit" value="ADD">
+      <input type="submit" name="button" id="id_button" value="ADD">
     {% endif %}
+<br>
+<br>
+grade_posted: {{ grade_posted }}
+<br>
+course_group_pk_posted: {{ course_group_pk_posted }}
+<br>
+button_posted: {{ button_posted }}
 </form>
 <br>
 <div>

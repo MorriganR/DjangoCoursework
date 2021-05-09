@@ -37,6 +37,21 @@ def course_detail(request, course_id=1):
     def post(self, *args, **kwargs):
         return self.get(*args, **kwargs)
 
+    grade_posted = -1
+    course_group_pk_posted = -1
+    button_posted = '-1'
+    if request.method == 'POST':
+        grade_form = GradeForm(request.POST)
+        if grade_form.is_valid():
+            grade_posted = grade_form.cleaned_data['grade']
+            course_group_pk_posted = grade_form.cleaned_data['course_group_pk']
+            button_posted = grade_form.cleaned_data['button']
+        else:
+            test_test = 1
+    else:
+        grade_form = GradeForm()
+    #context = {'course_list': course_list, 'grade_form': grade_form}
+
     # Prepare data grades for FIG
     test_list = courses_grades_count()
     course = Course.objects.get(id=course_id)
@@ -65,7 +80,11 @@ def course_detail(request, course_id=1):
             'group_name' : group_name,
             'grds' : grds,
             'fig_dict' : fig_dict,
-            'user_grade' : user_grade}
+            'user_grade' : user_grade,
+            'grade_form': grade_form,
+            'grade_posted': grade_posted,
+            'course_group_pk_posted': course_group_pk_posted,
+            'button_posted': button_posted}
     return render(request, 'gausscourse/course_detail.html', context)
 
 def get_fig_dict(grd_dict, group_name):
