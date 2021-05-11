@@ -5,22 +5,26 @@
 {% endblock %}
 {% block content %}
 <form action="/" method="get">
+  
   {{ form }}
-  <input type="submit" value="Set">
+  <input type="submit" value="Застосувати">
 </form>
 {% if course_list %}
-<table style="width:80%">
+<table class=table>
+  <thead>
   <tr>
     {% if form.name_filter.value %}
     <th><a href="{% url 'index' %}?name_filter={{ form.name_filter.value }}&sort={{ sort }}">Назва предмету</a></th>
     {% else %}
     <th><a href="{% url 'index' %}?sort={{ sort }}">Назва предмету</a></th>
     {% endif %}
-    <th>start_date</th>
-    <th>finish_date</th>
+    <th>Початок курсу</th>
+    <th>Закінчення курсу</th>
     <th>Кількість оцінок</th>
   </tr>
-    {% for course in course_list %}
+</thead>
+<tbody>
+    {% for course in course_list %} 
   <tr>
     <td><a href="{% url 'course'  %}{{ course.id }}">{{ course.name }}</a></td>
     <td>{{ course.start_date }}</td>
@@ -34,7 +38,13 @@
     </td>
   </tr>
     {% endfor %}
+  </tbody>
 </table>
+
+
+
+
+
 {% else %}
     <p>No courses are available.</p>
 {% endif %}

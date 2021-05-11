@@ -18,6 +18,7 @@ def home(request):
     context = {'user_grades' : user_grades}
     return render(request, 'gausscourse/home.html', context)
 
+
 def courses_grades_count():
     with connection.cursor() as cursor:
         query = """SELECT gausscourse_course.id, gausscourse_course.name,
@@ -31,7 +32,8 @@ def courses_grades_count():
         cursor.execute(query)
         res_list = cursor.fetchall()
     return res_list
-
+    
+@login_required
 def course_detail(request, course_id=1):
     # essentially, mirror GET behavior exactly on POST
     def post(self, *args, **kwargs):
