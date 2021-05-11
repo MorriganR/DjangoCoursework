@@ -3,19 +3,22 @@
 {% block content %}
 <div>
   {% if user.first_name or user.last_name %}
-    Welcome, slave: {{ user.first_name|add:' '|add:user.last_name }}
+    Особистий кабінет користувача: {{ user.first_name|add:' '|add:user.last_name }}
   {% else %}
-    Welcome: {{ user.username }}
+    Особистий кабінет користувача: {{ user.username }}
   {% endif %}
 </p>
 </div>
 {% if user_grades %}
-<table>
+<table class=table>
   <tr>
-    <th>grade</th>
-    <th>course.name</th>
-    <th>group.name</th>
+  <thead>
+    <th>Оцінка</th>
+    <th>Назва курсу</th>
+    <th>Група</th>
+    </thead>
   </tr>
+  <tbody>
     {% for grade in user_grades %}
   <tr>
     <td>{{ grade.grade }}</td>
@@ -23,8 +26,9 @@
     <td>{{ grade.course_group.group.name }}</td>
   </tr>
     {% endfor %}
+    </tbody>
 </table>
 {% else %}
-    <p>No grades are available.</p>
+    <p><center>Оцінки недоступні.</center></p>
 {% endif %}
 {% endblock %}

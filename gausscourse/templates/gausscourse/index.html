@@ -1,12 +1,10 @@
 {% extends 'gausscourse/base.html' %}
 {% block title %}
- b.i. перелік предметів із можливістю пошуку по назві та сортуванням <br>
- b.v. на головній сторінці має відображатись розподіл усіх оцінок по усім публічним курсам, наявних у системі і загальна кількість оцінок
+
 {% endblock %}
 {% block content %}
-<form action="/" method="get">
-  
-  {{ form }}
+<form id="s-form" action="/" method="get">
+ {{form}}
   <input type="submit" value="Застосувати">
 </form>
 {% if course_list %}
