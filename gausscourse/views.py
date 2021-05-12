@@ -89,53 +89,46 @@ def course_detail(request, course_id=1):
             'button_posted': button_posted}
     return render(request, 'gausscourse/course_detail.html', context)
 
-def get_fig_dict(grd_dict, group_name):
+def get_fig_dict(grd_dict, group_name, use_fake_data=True):
     import matplotlib.pyplot as plt
     import numpy as np
     import mpld3 as mpld3
     from scipy import stats
 
-    x = []              # all grades in one 2-dem list
-    label = []          # group name list
+    x = []              # list of grades in np.array
+    label = []          # list of group name
     num_bins = 11
-    # Start: Set fake data for grades if you have few grades
+
+    # Set parameters of fake data for grades if you have few grades
     grades_count_min = 4
     grades_generate_number = 22
     grades_gen_mu = 88.0
     grades_gen_sigma = 7.0
+
     x0 = np.array([])
     for grd in grd_dict:
         xl = np.array(grd_dict[grd])
-        xl = xl[(xl > 0) & (xl < 100)]
-        if xl.size < grades_count_min:
+        if use_fake_data and (xl.size < grades_count_min):
             xl = grades_gen_mu + grades_gen_sigma * np.random.randn(grades_generate_number)
             xl = xl[(xl > 0) & (xl < 100)]
+            if grd != 0:
+                x0 = np.concatenate([x0, xl])
         x.append(xl)
         label.append(group_name[grd])
-        if grd != 0:
-            x0 = np.concatenate([x0, xl])
-    if x0.size < grades_count_min:
-        x0 = grades_gen_mu + grades_gen_sigma * np.random.randn(grades_generate_number)
-        x0 = x0[(x0 > 0) & (x0 < 100)]
-    x[0] = x0
-    # Stop: Set fake data...
 
-    # Fitting data to normal and beta distribution (for all groups)
-    x4line = np.arange(0, 100, 0.2)
-    mu, sigma = stats.norm.fit(x[0])
-    pdf_norm = stats.norm.pdf(x4line, mu, sigma)
-    params = stats.beta.fit(x[0], floc=0, fscale=100)
-    pdf_beta = stats.beta.pdf(x4line, *params)
+    if use_fake_data:
+        if (x0.size < grades_count_min):
+            x0 = grades_gen_mu + grades_gen_sigma * np.random.randn(grades_generate_number)
+            x0 = x0[(x0 > 0) & (x0 < 100)]
+        x[0] = x0
 
     fig, ax = plt.subplots(figsize=(11, 4))
     fig.subplots_adjust(right=0.7)
     ax.set_xlim(55, 100)
-    ax.set_xlabel('Grade')
-    ax.set_ylabel('Density of students grades')
-    ax.set_title(f'Test Histogram \u03bc={round(mu, 1)}, \u03C3={round(sigma, 1)} \
-        N={x[0].size}, Beta Params: \
-        {round(params[0],1), round(params[1],1), round(params[2],1), round(params[3],1)}')
     ax.grid(True, alpha=0.3)
+
+    # X value for plot normal distribution
+    x4line = np.arange(0, 100, 0.2)
 
     # generate histogram at temp plot, bins->X n->Y for draw it as line (fill_between)
     fig_temp, ax_temp = plt.subplots()
@@ -145,19 +138,7 @@ def get_fig_dict(grd_dict, group_name):
     i = -1
     for n_cur in n:
         i = i + 1
-        if (n.ndim == 1) or (i == 0):
-            l, = ax.plot(x4line, pdf_norm, '--', lw=3.0, label='Норм Розподіл для всіх')
-            ax.plot(x4line, pdf_beta, ':', lw=3.0, color=l.get_color(), label='Бета Розподіл для всіх')
-            ax.legend(['Norm','Beta'])
-            if (n.ndim == 1):
-                n_new = np.concatenate([n, [0]])
-            else:
-                n_new = np.concatenate([n_cur, [0]])
-        else:
-            mu, sigma = stats.norm.fit(x[i])
-            pdf_norm = stats.norm.pdf(x4line, mu, sigma)
-            l, = ax.plot(x4line, pdf_norm, '--', lw=3.0, label='Норм Розподіл для '+label[i])
-            n_new = np.concatenate([n_cur, [0]])
+        n_new = np.concatenate([n_cur, [0]])
         x_array = np.array([bins[0]])
         y_array = np.array([0.0])
         for xi, xii, yi in zip(bins, bins[1:], n_new):
@@ -175,9 +156,15 @@ def get_fig_dict(grd_dict, group_name):
             y_array = np.concatenate([y_array, [yi]])
             x_array = np.concatenate([x_array, [xi_0 - delta]])
             y_array = np.concatenate([y_array, [0.0]])
-        ax.fill_between(x_array, y_array, color=l.get_color(), alpha=0.7, label='Гістограма для '+label[i])
-        if (n.ndim == 1):
-            break
+        lab =  'Всіх груп' if 0 == i else label[i]
+        fb = ax.fill_between(x_array, y_array, alpha=0.7, label='Гістограма для ' + lab)
+        mu, sigma = stats.norm.fit(x[i])
+        pdf_norm = stats.norm.pdf(x4line, mu, sigma)
+        ax.plot(x4line, pdf_norm, '--', lw=3.0, color=fb.get_facecolor(), label='Норм Розподіл для ' + lab)
+
+    ax.set_xlabel('Grade')
+    ax.set_ylabel('Density of students grades')
+    ax.set_title(f'Test Histogram  N={x[0].size}, \u03bc={round(mu, 1)}, \u03C3={round(sigma, 1)}')
 
     # define interactive legend
     handles, labels = ax.get_legend_handles_labels() # return lines and labels
