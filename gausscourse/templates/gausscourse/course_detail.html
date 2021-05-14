@@ -24,27 +24,9 @@ ii. перегляд розподілу оцінок по кожному пре�
     {% else %}
       <input type="submit" name="button" id="id_button" value="ADD">
     {% endif %}
-<br>
-<br>
-grade_posted: {{ grade_posted }}
-<br>
-course_group_pk_posted: {{ course_group_pk_posted }}
-<br>
-button_posted: {{ button_posted }}
 </form>
 <br>
 <div>
-    <div>
-        {{ fig_src|safe }}
-    </div>
-
-    {% for key, value in group_name.items %}
-        id:{{ key }} {{ course.name }} - {{ value }} <br>
-        {% for key2, value2 in grds.items %}
-            {% if key2 == key %}
-                {{ value2 }} <br><br>
-            {% endif %}
-        {% endfor %}
-    {% endfor %}
+    {{ fig_src|safe }}
 </div>
 {% endblock %}
