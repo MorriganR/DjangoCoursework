@@ -34,9 +34,9 @@ button_posted: {{ button_posted }}
 </form>
 <br>
 <div>
-    {% for key, value in fig_dict.items %}
-        {{ value|safe }}
-    {% endfor %}
+    <div>
+        {{ fig_src|safe }}
+    </div>
 
     {% for key, value in group_name.items %}
         id:{{ key }} {{ course.name }} - {{ value }} <br>
