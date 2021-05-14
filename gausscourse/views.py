@@ -18,7 +18,6 @@ def home(request):
     context = {'user_grades' : user_grades}
     return render(request, 'gausscourse/home.html', context)
 
-
 def courses_grades_count():
     with connection.cursor() as cursor:
         query = """SELECT gausscourse_course.id, gausscourse_course.name,
@@ -32,7 +31,37 @@ def courses_grades_count():
         cursor.execute(query)
         res_list = cursor.fetchall()
     return res_list
-    
+
+def do_something_with_grade(user, course_pk, course_group_pk, grade_val, button_val):
+    course = Course.objects.filter( id=course_pk).first()
+    course_group = CourseGroup.objects.filter( id=course_group_pk).first()
+    grade = Grade.objects.filter( course_group__course__id=course_pk, user=user ).first()
+    if button_val == 'MOD':
+        if grade:
+            grade.course_group = course_group
+            grade.grade = grade_val
+            grade.save()
+            return 'MOD'
+        else:
+            return 'None'
+    if button_val == 'ADD':
+        if grade:
+            return 'None'
+        else:
+            grade = Grade()
+            grade.user = user
+            grade.course_group = course_group
+            grade.grade = grade_val
+            grade.save()
+            return 'ADD'
+    if button_val == 'DEL':
+        if grade:
+            grade.delete()
+            return 'DEL'
+        else:
+            return 'None'
+    return 'None'
+
 @login_required
 def course_detail(request, course_id=1):
     # essentially, mirror GET behavior exactly on POST
@@ -42,17 +71,19 @@ def course_detail(request, course_id=1):
     grade_posted = -1
     course_group_pk_posted = -1
     button_posted = '-1'
+    do_something_with_posted_grade = 0
     if request.method == 'POST':
         grade_form = GradeForm(request.POST)
         if grade_form.is_valid():
             grade_posted = grade_form.cleaned_data['grade']
             course_group_pk_posted = grade_form.cleaned_data['course_group_pk']
             button_posted = grade_form.cleaned_data['button']
-        else:
-            test_test = 1
+            do_something_with_posted_grade = 1
     else:
         grade_form = GradeForm()
-    #context = {'course_list': course_list, 'grade_form': grade_form}
+
+    if do_something_with_posted_grade:
+        do_something_with_grade(request.user, course_id, course_group_pk_posted, grade_posted, button_posted)
 
     # Prepare data grades for FIG
     test_list = courses_grades_count()
@@ -74,7 +105,7 @@ def course_detail(request, course_id=1):
         grds[gr.course_group_id].append(gr.grade)
     # END Prepare data grades for FIG
 
-    user_grade = (list(Grade.objects.filter( course_group_id__in=crs_grp_ids, user=request.user ).all()) or [None])[0]
+    user_grade = Grade.objects.filter( course_group_id__in=crs_grp_ids, user=request.user ).first()
     fig_dict = get_fig_dict(grds, group_name)
     context = {'course' : course,
             'course_groups' : course_groups,
