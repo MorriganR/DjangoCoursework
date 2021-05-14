@@ -106,13 +106,21 @@ def course_detail(request, course_id=1):
     # END Prepare data grades for FIG
 
     user_grade = Grade.objects.filter( course_group_id__in=crs_grp_ids, user=request.user ).first()
-    fig_dict = get_fig_dict(grds, group_name)
+    course_grade_last_changed = Grade.objects.filter( course_group__course__id=course_id )\
+                                            .order_by('-modified').first()
+    if (course_grade_last_changed is None) or (course_grade_last_changed.modified > course.fig_created):
+        fig_src = get_fig_source(grds, group_name)
+        course.fig_text = fig_src
+        course.save()
+    else:
+        fig_src = course.fig_text
+
     context = {'course' : course,
             'course_groups' : course_groups,
             'crs_grp_ids' : crs_grp_ids,
             'group_name' : group_name,
             'grds' : grds,
-            'fig_dict' : fig_dict,
+            'fig_src' : fig_src,
             'user_grade' : user_grade,
             'grade_form': grade_form,
             'grade_posted': grade_posted,
@@ -120,7 +128,7 @@ def course_detail(request, course_id=1):
             'button_posted': button_posted}
     return render(request, 'gausscourse/course_detail.html', context)
 
-def get_fig_dict(grd_dict, group_name, use_fake_data=True):
+def get_fig_source(grd_dict, group_name, use_fake_data=True):
     import matplotlib.pyplot as plt
     import numpy as np
     import mpld3 as mpld3
@@ -202,9 +210,8 @@ def get_fig_dict(grd_dict, group_name, use_fake_data=True):
     inter_leg = mpld3.plugins.InteractiveLegendPlugin(handles,labels,alpha_unsel=0.1,alpha_over=1.5,start_visible=True)
     mpld3.plugins.connect(fig, inter_leg)
 
-    fig_dict = {}
-    fig_dict[0] = mpld3.fig_to_html(fig)
-    return fig_dict
+    fig_source = mpld3.fig_to_html(fig)
+    return fig_source
 
 class CourseIndexView(ListView):
     context_object_name = 'course_list'
