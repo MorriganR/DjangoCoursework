@@ -88,25 +88,24 @@ def course_detail(request, course_id=1):
     # Prepare data grades for FIG
     test_list = courses_grades_count()
     course = Course.objects.get(id=course_id)
-    course_groups = list(CourseGroup.objects.filter( course_id = course.id).all())
-    crs_grp_ids = [] # example list [7, ...]
     group_name = {}  # example dict {0:'all', 7:'other group', ...}
     grds = {}        # example dict {0:[56, 99, 88, 77, 82, 66, 78, 75], 7:[56, 99, 88, 77], ...}
     group_name[0] = 'all'
     grds[0] = []
+
+    course_groups = list(CourseGroup.objects.filter( course = course ).all())
     for crs_grp in course_groups:
-        crs_grp_ids.append(crs_grp.id)
         group_name[crs_grp.id] = crs_grp.group.name
         grds[crs_grp.id] = []
-        #grd = list(Grade.objects.filter( course_group_id = crs_grp.id).all())
-    grades = list(Grade.objects.filter( course_group_id__in=crs_grp_ids).all())
-    for gr in grades:
+
+    course_grades = list(Grade.objects.filter( course_group__course = course ).all())
+    for gr in course_grades:
         grds[0].append(gr.grade)
         grds[gr.course_group_id].append(gr.grade)
     # END Prepare data grades for FIG
 
-    user_grade = Grade.objects.filter( course_group_id__in=crs_grp_ids, user=request.user ).first()
-    course_grade_last_changed = Grade.objects.filter( course_group__course__id=course_id )\
+    user_grade = Grade.objects.filter( course_group__course = course, user = request.user ).first()
+    course_grade_last_changed = Grade.objects.filter( course_group__course = course )\
                                             .order_by('-modified').first()
     if (course_grade_last_changed is None) or (course_grade_last_changed.modified > course.fig_created):
         fig_src = get_fig_source(grds, group_name)
@@ -117,15 +116,9 @@ def course_detail(request, course_id=1):
 
     context = {'course' : course,
             'course_groups' : course_groups,
-            'crs_grp_ids' : crs_grp_ids,
-            'group_name' : group_name,
-            'grds' : grds,
             'fig_src' : fig_src,
             'user_grade' : user_grade,
-            'grade_form': grade_form,
-            'grade_posted': grade_posted,
-            'course_group_pk_posted': course_group_pk_posted,
-            'button_posted': button_posted}
+            'grade_form': grade_form}
     return render(request, 'gausscourse/course_detail.html', context)
 
 def get_fig_source(grd_dict, group_name, use_fake_data=True):
@@ -253,7 +246,6 @@ def test(request):
     from matplotlib.pyplot import figure, title, bar
     import numpy as np
     import mpld3
-    import astropy.visualization as astro
     from scipy.stats import norm
     from scipy import stats
 
@@ -305,9 +297,9 @@ def test(request):
     # the histogram of the data
     #n, bins, patches = ax.hist(x, num_bins, width=width, density=True)
     #n, bins, patches = ax.hist(x, density=True)
-    bins = 22 # 'scott', 'freedman', 'knuth', 'blocks'
-    astro.hist(x_new, bins=bins, ax=ax, histtype='stepfilled', density=True)
-    #astro.hist(r, bins=bins, ax=ax, alpha=0.5, histtype='stepfilled', density=True)
+    bins = 22
+    ax.hist(x_new, bins=bins, histtype='stepfilled', density=True)
+    #ax.hist(r, bins=bins, alpha=0.5, histtype='stepfilled', density=True)
     # add a 'best fit' line
     x2 = np.arange(35, 110)
     y2 = ((1 / (np.sqrt(2 * np.pi) * sigma)) *
