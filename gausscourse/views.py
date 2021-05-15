@@ -33,11 +33,10 @@ def courses_grades_count():
         res_list = cursor.fetchall()
     return res_list
 
-def do_something_with_grade(user, course_pk, course_group_pk, grade_val, button_val):
-    course = Course.objects.filter( id=course_pk).first()
+def do_something_with_grade(user, course, course_group_pk, grade_val, button_val, is_editable_grade):
     course_group = CourseGroup.objects.filter( id=course_group_pk).first()
-    grade = Grade.objects.filter( course_group__course__id=course_pk, user=user ).first()
-    if button_val == 'MOD':
+    grade = Grade.objects.filter( course_group__course__id=course.id, user=user ).first()
+    if button_val == 'MOD' and is_editable_grade:
         if grade:
             grade.course_group = course_group
             grade.grade = grade_val
@@ -45,7 +44,7 @@ def do_something_with_grade(user, course_pk, course_group_pk, grade_val, button_
             return 'MOD'
         else:
             return 'None'
-    if button_val == 'ADD':
+    if button_val == 'ADD' and is_editable_grade:
         if grade:
             return 'None'
         else:
@@ -90,7 +89,7 @@ def course_detail(request, course_id=1):
         grade_form = GradeForm()
 
     if do_something_with_posted_grade and request.user.is_authenticated:
-        do_something_with_grade(request.user, course_id, course_group_pk_posted, grade_posted, button_posted)
+        do_something_with_grade(request.user, course, course_group_pk_posted, grade_posted, button_posted, is_editable_grade)
 
     # Prepare data grades for FIG
     test_list = courses_grades_count()
