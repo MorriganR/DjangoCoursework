@@ -29,6 +29,20 @@
     </tbody>
 </table>
 {% else %}
-    <p><center>Оцінки недоступні.</center></p>
+    <p><center>Оцінки недоступні.<p>  </p></center></p>
+  
 {% endif %}
+<p><input type="submit" id = "send" value= "Зв`язок з модератором" name = "send"; ></p>
+
+<script>
+  send.onclick = function() {
+    if (confirm('Перенаправлення на поштовий клієнт')) {
+    window.open('mailto:workcoursesend@gmail.com?subject=Виникла помилка при взаємодії з проектом&body=Проект: coursework.vlabs.knu.ua. Опис проблеми:');
+  } else {
+  }
+  };
+</script>
+
+
+
 {% endblock %}

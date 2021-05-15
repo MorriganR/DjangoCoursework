@@ -15,7 +15,7 @@
   {% if is_editable_grade %}
     <form method="post">
         {% csrf_token %}
-        <input type="number" name="grade" required id="id_grade" value="{{ user_grade.grade }}">
+        <input type="number" name="grade" required id="id_grade" value="{{ user_grade.grade }}" min ="0" max = "100">
         <select name="course_group_pk" required id="id_course_group_pk">
             <option disabled>Select Group</option>
             {% for course_group in course_groups %}
@@ -27,8 +27,8 @@
             {% endfor %}
         </select>
         {% if user_grade  %}
-            <input type="submit" name="button" id="id_button" value="MOD">
-            <input type="submit" name="button" id="id_button" value="DEL">
+            <input type="submit" name="button" id="id_button" value="Оновлення">
+            <input type="submit" name="button" id="id_button" value="Видалення">
         {% else %}
             <input type="submit" name="button" id="id_button" value="ADD">
         {% endif %}

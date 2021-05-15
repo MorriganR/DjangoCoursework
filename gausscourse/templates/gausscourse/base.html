@@ -25,7 +25,11 @@
         {% else %}
         <a href="{% url 'login' %}" class="navbar-item">Вхід</a>
         {% endif %}
+       
+        {% if user.is_staff %}
         <a href="{% url 'test' %}" class="navbar-item">Test</a>
+        {% endif %}
+       
     </div>
 
     <div class="body-content">

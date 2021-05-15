@@ -1,7 +1,5 @@
 from django.shortcuts import render
-
 # Create your views here.
-
 from django.http import HttpResponse
 from .models import Course
 from .models import CourseGroup
@@ -12,12 +10,17 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from django.db import connection
 from datetime import datetime
+from django.core.mail import send_mail
 
 @login_required
 def home(request):
     user_grades = list(Grade.objects.filter( user=request.user ).all())
     context = {'user_grades' : user_grades}
     return render(request, 'gausscourse/home.html', context)
+    
+
+
+
 
 def courses_grades_count():
     with connection.cursor() as cursor:
@@ -36,12 +39,12 @@ def courses_grades_count():
 def do_something_with_grade(user, course, course_group_pk, grade_val, button_val, is_editable_grade):
     course_group = CourseGroup.objects.filter( id=course_group_pk).first()
     grade = Grade.objects.filter( course_group__course__id=course.id, user=user ).first()
-    if button_val == 'MOD' and is_editable_grade:
+    if button_val == 'Оновлення' and is_editable_grade:
         if grade:
             grade.course_group = course_group
             grade.grade = grade_val
             grade.save()
-            return 'MOD'
+            return 'Оновлення'
         else:
             return 'None'
     if button_val == 'ADD' and is_editable_grade:
@@ -54,10 +57,10 @@ def do_something_with_grade(user, course, course_group_pk, grade_val, button_val
             grade.grade = grade_val
             grade.save()
             return 'ADD'
-    if button_val == 'DEL':
+    if button_val == 'Видалення':
         if grade:
             grade.delete()
-            return 'DEL'
+            return 'Видалення'
         else:
             return 'None'
     return 'None'
