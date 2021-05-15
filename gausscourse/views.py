@@ -113,9 +113,10 @@ def course_detail(request, course_id=1):
         if request.user.is_authenticated else 0
     course_grade_last_changed = Grade.objects.filter( course_group__course = course )\
                                             .order_by('-modified').first()
-    if (course_grade_last_changed is None) or (course_grade_last_changed.modified > course.fig_created):
+    if (course_grade_last_changed is None) or (course_grade_last_changed.modified > course.fig_modified):
         fig_src = get_fig_source(grds, group_name)
         course.fig_text = fig_src
+        course.fig_modified = datetime.utcnow()
         course.save()
     else:
         fig_src = course.fig_text
