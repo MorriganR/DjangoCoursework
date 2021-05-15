@@ -198,12 +198,14 @@ def get_fig_source(grd_dict, group_name, use_fake_data=True):
         lab =  'Всіх груп' if 0 == i else label[i]
         fb = ax.fill_between(x_array, y_array, alpha=0.7, label='Гістограма для ' + lab)
         mu, sigma = stats.norm.fit(x[i])
+        lab =  'Всіх груп' if 0 == i else label[i] + f' (\u03bc={round(mu, 1)}, \u03C3={round(sigma, 1)})'
+        title_lab = f'Test Histogram  N={x[0].size}, \u03bc={round(mu, 1)}, \u03C3={round(sigma, 1)}' if 0 == i else title_lab
         pdf_norm = stats.norm.pdf(x4line, mu, sigma)
         ax.plot(x4line, pdf_norm, '--', lw=3.0, color=fb.get_facecolor(), label='Норм Розподіл для ' + lab)
 
     ax.set_xlabel('Grade')
     ax.set_ylabel('Density of students grades')
-    ax.set_title(f'Test Histogram  N={x[0].size}, \u03bc={round(mu, 1)}, \u03C3={round(sigma, 1)}')
+    ax.set_title(title_lab)
 
     # define interactive legend
     handles, labels = ax.get_legend_handles_labels() # return lines and labels
