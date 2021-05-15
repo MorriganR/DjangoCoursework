@@ -11,6 +11,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView
 from django.db import connection
+from datetime import datetime
 
 @login_required
 def home(request):
@@ -62,11 +63,17 @@ def do_something_with_grade(user, course_pk, course_group_pk, grade_val, button_
             return 'None'
     return 'None'
 
-@login_required
 def course_detail(request, course_id=1):
     # essentially, mirror GET behavior exactly on POST
     def post(self, *args, **kwargs):
         return self.get(*args, **kwargs)
+
+    course = Course.objects.filter( id = course_id ).first()
+    if course is None:
+        return render(request, 'gausscourse/course_detail.html')
+    is_editable_grade = True\
+        if ( datetime.now().timestamp() < course.finish_date.timestamp()\
+            and not course.is_disabled ) else False
 
     grade_posted = -1
     course_group_pk_posted = -1
@@ -82,12 +89,11 @@ def course_detail(request, course_id=1):
     else:
         grade_form = GradeForm()
 
-    if do_something_with_posted_grade:
+    if do_something_with_posted_grade and request.user.is_authenticated:
         do_something_with_grade(request.user, course_id, course_group_pk_posted, grade_posted, button_posted)
 
     # Prepare data grades for FIG
     test_list = courses_grades_count()
-    course = Course.objects.get(id=course_id)
     group_name = {}  # example dict {0:'all', 7:'other group', ...}
     grds = {}        # example dict {0:[56, 99, 88, 77, 82, 66, 78, 75], 7:[56, 99, 88, 77], ...}
     group_name[0] = 'all'
@@ -104,7 +110,8 @@ def course_detail(request, course_id=1):
         grds[gr.course_group_id].append(gr.grade)
     # END Prepare data grades for FIG
 
-    user_grade = Grade.objects.filter( course_group__course = course, user = request.user ).first()
+    user_grade = Grade.objects.filter( course_group__course = course, user = request.user ).first()\
+        if request.user.is_authenticated else 0
     course_grade_last_changed = Grade.objects.filter( course_group__course = course )\
                                             .order_by('-modified').first()
     if (course_grade_last_changed is None) or (course_grade_last_changed.modified > course.fig_created):
@@ -118,7 +125,8 @@ def course_detail(request, course_id=1):
             'course_groups' : course_groups,
             'fig_src' : fig_src,
             'user_grade' : user_grade,
-            'grade_form': grade_form}
+            'grade_form': grade_form,
+            'is_editable_grade': is_editable_grade}
     return render(request, 'gausscourse/course_detail.html', context)
 
 def get_fig_source(grd_dict, group_name, use_fake_data=True):
@@ -233,11 +241,14 @@ class CourseIndexView(ListView):
             form = FilterForm(self.request.GET)
             if form.is_valid():
                 name_filter = form.cleaned_data['name_filter']
-                return_obj = Course.objects.filter(name__icontains = name_filter).order_by(sortBy)
+                return_obj = Course.objects.filter(name__icontains = name_filter).order_by(sortBy) if self.request.user.is_authenticated\
+                    else Course.objects.filter( is_public = True, name__icontains = name_filter).order_by(sortBy)
             else:
-                return_obj = Course.objects.all()
+                return_obj = Course.objects.all() if self.request.user.is_authenticated\
+                    else Course.objects.filter( is_public = True ).all()
         else:
-            return_obj = Course.objects.all()
+            return_obj = Course.objects.all() if self.request.user.is_authenticated\
+                else Course.objects.filter( is_public = True ).all()
         return_list = list(return_obj)
         return return_list
 

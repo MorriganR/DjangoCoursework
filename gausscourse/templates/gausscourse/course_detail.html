@@ -1,32 +1,59 @@
 {% extends 'gausscourse/base.html' %}
 {% block title %}
-Course Detail - {{ course.name }}<br>
-ii. перегляд розподілу оцінок по кожному предмету у вигляді гістограми,
-де різні групи відображаються різними кольорами стовпчиків.<br>
+{% if course  %}
+    {% if user.is_authenticated or course.is_public %}
+        {{ course.name }}<br>
+    {% else %}
+        fatal error, service unavailable<br>
+    {% endif %}
+{% else %}
+    fatal error, service unavailable<br>
+{% endif %}
 {% endblock %}
 {% block content %}
-<form method="post">
-  {% csrf_token %}
-  <input type="number" name="grade" required id="id_grade" value="{{ user_grade.grade }}">
-  <select name="course_group_pk" required id="id_course_group_pk">
-    <option disabled>Select Group</option>
-    {% for course_group in course_groups %}
-        {% if user_grade.course_group.pk  == course_group.pk  %}
-            <option selected value="{{ course_group.pk }}">{{ course_group.group.name }}</option>
+{% if user.is_authenticated and course %}
+  {% if is_editable_grade %}
+    <form method="post">
+        {% csrf_token %}
+        <input type="number" name="grade" required id="id_grade" value="{{ user_grade.grade }}">
+        <select name="course_group_pk" required id="id_course_group_pk">
+            <option disabled>Select Group</option>
+            {% for course_group in course_groups %}
+                {% if user_grade.course_group.pk  == course_group.pk  %}
+                    <option selected value="{{ course_group.pk }}">{{ course_group.group.name }}</option>
+                {% else %}
+                    <option value="{{ course_group.pk }}">{{ course_group.group.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        {% if user_grade  %}
+            <input type="submit" name="button" id="id_button" value="MOD">
+            <input type="submit" name="button" id="id_button" value="DEL">
         {% else %}
-            <option value="{{ course_group.pk }}">{{ course_group.group.name }}</option>
+            <input type="submit" name="button" id="id_button" value="ADD">
         {% endif %}
-    {% endfor %}
-  </select>
-    {% if user_grade  %}
-      <input type="submit" name="button" id="id_button" value="MOD">
-      <input type="submit" name="button" id="id_button" value="DEL">
-    {% else %}
-      <input type="submit" name="button" id="id_button" value="ADD">
-    {% endif %}
-</form>
+    </form>
+  {% elif user_grade %}
+    <form method="post">
+        {% csrf_token %}
+        <input readonly type="number" name="grade" required id="id_grade" value="{{ user_grade.grade }}">
+        <select readonly name="course_group_pk" required id="id_course_group_pk">
+            <option disabled>Select Group</option>
+            {% for course_group in course_groups %}
+                {% if user_grade.course_group.pk  == course_group.pk  %}
+                    <option selected value="{{ course_group.pk }}">{{ course_group.group.name }}</option>
+                {% else %}
+                    <option value="{{ course_group.pk }}">{{ course_group.group.name }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <input type="submit" name="button" id="id_button" value="DEL">
+  {% endif %}
+{% endif %}
 <br>
+{% if user.is_authenticated or course.is_public %}
 <div>
     {{ fig_src|safe }}
 </div>
+{% endif %}
 {% endblock %}
