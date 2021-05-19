@@ -47,7 +47,7 @@ def do_something_with_grade(user, course, course_group_pk, grade_val, button_val
             return 'Оновлення'
         else:
             return 'None'
-    if button_val == 'ADD' and is_editable_grade:
+    if button_val == 'Додати' and is_editable_grade:
         if grade:
             return 'None'
         else:
@@ -56,7 +56,7 @@ def do_something_with_grade(user, course, course_group_pk, grade_val, button_val
             grade.course_group = course_group
             grade.grade = grade_val
             grade.save()
-            return 'ADD'
+            return 'Додати'
     if button_val == 'Видалення':
         if grade:
             grade.delete()
