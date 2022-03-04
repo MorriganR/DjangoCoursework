@@ -132,26 +132,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-SOCIAL_AUTH_GITHUB_KEY = '1a2ab92ff36396776a1b'
-SOCIAL_AUTH_GITHUB_SECRET = '504b12d9b4d1cdcdf68c95a681af9c1a20492bda'
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '975066345885-jocufdsel0s0lvs9lem8fovvv29nl6ag.apps.googleusercontent.com'
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'DRqpZMDaMUaJCuiS9W5r541J'
-
-SOCIAL_AUTH_RAISE_EXCEPTIONS = False
-SOCIAL_AUTH_FACEBOOK_KEY = '464943308093488'
-SOCIAL_AUTH_FACEBOOK_SECRET = '4c25b56c0223b64ebc26bc98c888d032'
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email'] 
-SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {       
-  'fields': 'id, name, email, picture.type(large), link'
-}
-SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [                 
-    ('name', 'name'),
-    ('email', 'email'),
-    ('picture', 'picture'),
-    ('link', 'profile_url'),
-]
 # SOCIAL_AUTH_GITHUB_SCOPE = [...]
 
 # Internationalization
